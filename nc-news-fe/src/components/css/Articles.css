@@ -14,4 +14,11 @@
 .articleTitle {
   font-weight: 400;
   text-transform: uppercase;
+  color: #a0423a;
+}
+
+.articleFooterText {
+  font-size: 30%;
+  margin-top: 5px;
+  font-weight: 400;
 }

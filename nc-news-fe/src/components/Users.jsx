@@ -12,7 +12,7 @@ class Users extends Component {
         <h2> Users </h2>
         {this.state.users.map(user => {
           return (
-            <div className="userCard">
+            <div key={user._id} className="userCard">
               {user.username}
               <img src={user.avatar_url} />
               {user.name}
