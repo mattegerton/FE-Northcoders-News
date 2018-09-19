@@ -1,5 +1,17 @@
 .articleBlock {
-  border: 1px solid #262c2d;
+  background: white;
   margin: 5px;
   padding: 10px;
+}
+
+.articleBody {
+  font-weight: 300;
+  color: #262c2d;
+  text-align: justify;
+  font-size: 80%;
+}
+
+.articleTitle {
+  font-weight: 400;
+  text-transform: uppercase;
 }

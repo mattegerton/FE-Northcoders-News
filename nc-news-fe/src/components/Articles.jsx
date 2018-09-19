@@ -19,8 +19,8 @@ class Articles extends Component {
               <col width="20%" />
               <col width="70%" />
               <tr>
-                <th> {article.title} </th>
-                <th> {article.body}</th>
+                <th className="articleTitle"> {article.title} </th>
+                <th className="articleBody"> {article.body}</th>
 
                 <th>
                   <ion-icon name="reorder" />
