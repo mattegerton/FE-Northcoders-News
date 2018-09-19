@@ -1,0 +1,13 @@
+.navigation-top {
+  background: #262c2d;
+  color: white;
+}
+
+.navigation-top ul {
+  list-style: none;
+}
+
+.navigation-drop ul li {
+  text-decoration: none;
+  color: white;
+}

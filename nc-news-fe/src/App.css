@@ -1,6 +1,13 @@
 .App {
   text-align: center;
+  color: #ac3636;
   font-family: "Roboto", sans-serif;
+  font-weight: 400;
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
 }
 
 /* ICONS */

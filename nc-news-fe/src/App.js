@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route, Link } from "react-router-dom";
+import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header";
 import Navigation from "./components/Navigation";
@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import Topics from "./components/Topics";
 import Articles from "./components/Articles";
 import Users from "./components/Users";
+import Error from "./components/WrongPath";
 
 class App extends Component {
   render() {
@@ -15,10 +16,14 @@ class App extends Component {
       <div className="App">
         <Header />
         <Navigation />
-        <Route exact path="/" render={() => <MainContent />} />
-        <Route exact path="/topics" render={() => <Topics />} />
-        <Route exact path="/articles" render={() => <Articles />} />
-        <Route exact path="/users" render={() => <Users />} />
+        <Switch>
+          <Route exact path="/" render={() => <MainContent />} />
+          <Route exact path="/topics" render={() => <Topics />} />
+          <Route exact path="/articles" render={() => <Articles />} />
+          <Route exact path="/users" render={() => <Users />} />
+          <Route path="/topics/:topic" component={Articles} />
+          <Route component={Error} />
+        </Switch>
         <Footer />
       </div>
     );

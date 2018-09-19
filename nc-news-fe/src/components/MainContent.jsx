@@ -6,6 +6,7 @@ class MainContent extends Component {
     return (
       <div>
         <h3> Main Content</h3>
+
         <Link to="/topics">
           <button>
             <ion-icon name="book" />
