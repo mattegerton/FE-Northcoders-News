@@ -9,6 +9,7 @@ class Articles extends Component {
   };
 
   render() {
+    console.log(this.props.match.params);
     return (
       <div>
         <h2> Articles </h2>
@@ -42,12 +43,24 @@ class Articles extends Component {
   }
 
   componentDidMount() {
-    axios.get("https://nc-news-matt.herokuapp.com/api/articles").then(data => {
-      this.setState({
-        articles: data.data.articles
-      });
-    });
+    const params = this.props.match.params.topic;
+    if (params) {
+      axios
+        .get(`https://nc-news-matt.herokuapp.com/api/topics/${params}/articles`)
+        .then(data => {
+          this.setState({
+            articles: data.data.articles
+          });
+        });
+    } else {
+      axios
+        .get("https://nc-news-matt.herokuapp.com/api/articles")
+        .then(data => {
+          this.setState({
+            articles: data.data.articles
+          });
+        });
+    }
   }
 }
-
 export default Articles;
