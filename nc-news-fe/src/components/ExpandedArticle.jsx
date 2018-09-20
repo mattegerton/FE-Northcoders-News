@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import "./css/ExpandedArticle.css";
 
 class ExpandedArticle extends Component {
   state = {
@@ -7,24 +8,44 @@ class ExpandedArticle extends Component {
     comments: []
   };
   render() {
+    console.log(this.state.comments);
     return (
       <div>
-        <table>
-          <col width="60%" />
+        <table className="articleTable">
           <tbody>
             <tr>
-              <th>
-                <h2>{this.state.article.title}</h2>
-              </th>
+              <td id="articleTitle">{this.state.article.title}</td>
             </tr>
             <tr>
-              <h6> {this.state.article.created_by}</h6>
+              <td id="articleBody">{this.state.article.body}</td>
             </tr>
             <tr>
-              <h3> {this.state.article.body} </h3>
+              <td id="articleCreator">
+                Article posted by {this.state.article.created_by}
+              </td>
             </tr>
           </tbody>
         </table>
+        Comments
+        {this.state.comments.map(comment => {
+          return (
+            <div>
+              <table className="commentTable">
+                <tbody>
+                  <tr>
+                    <th id="commentVoteCount">{comment.votes}</th>
+                    <th id="commentBody">
+                      {comment.body}
+                      <p id="commentCreator">{`Posted by ${
+                        comment.belongs_to
+                      }`}</p>
+                    </th>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          );
+        })}
       </div>
     );
   }
@@ -36,6 +57,15 @@ class ExpandedArticle extends Component {
       .then(data => {
         this.setState({
           article: data.data.article
+        });
+      });
+    axios
+      .get(
+        `https://nc-news-matt.herokuapp.com/api/articles/${articleID}/comments`
+      )
+      .then(data => {
+        this.setState({
+          comments: data.data.comments
         });
       });
   }

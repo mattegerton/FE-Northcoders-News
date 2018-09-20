@@ -1,0 +1,46 @@
+.articleTable,
+.commentTable {
+  background: white;
+  text-align: left;
+  padding: 2%;
+}
+
+.articleTable {
+  width: 80%;
+  margin: 5% auto;
+}
+
+#articleTitle {
+  text-transform: uppercase;
+  font-size: 130%;
+  text-align: center;
+  padding-bottom: 0.5%;
+}
+
+#articleCreator {
+  font-size: 50%;
+  color: #262c2d;
+}
+
+#commentCreator {
+  text-align: right;
+  margin-top: 1%;
+  font-size: 50%;
+  color: #a0423a;
+}
+
+#articleBody,
+#commentBody {
+  color: #262c2d;
+  text-align: justify;
+}
+
+.commentTable {
+  margin: 2% auto;
+  font-size: 60%;
+  width: 60%;
+}
+
+#commentVoteCount {
+  padding-right: 3%;
+}
