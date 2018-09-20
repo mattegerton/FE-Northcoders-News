@@ -14,6 +14,7 @@ class Articles extends Component {
     return (
       <div>
         <h2> Articles </h2>
+        <Link to="/articles/post">Post an article!</Link>
         {[...articles]
           .sort((a, b) => {
             const c = new Date(a.created_at);
@@ -48,10 +49,18 @@ class Articles extends Component {
                         </Link>
                       </th>
                       <th>
-                        <ion-icon name="thumbs-down" />
+                        <button>
+                          <ion-icon name="thumbs-down" />
+                        </button>
                       </th>
                       <th>
-                        <ion-icon name="thumbs-up" />
+                        <button
+                          onClick={() => {
+                            this.handleVote("up");
+                          }}
+                        >
+                          <ion-icon name="thumbs-up" />
+                        </button>
                       </th>
                       <th>
                         <ion-icon name="chatboxes" />
@@ -66,6 +75,10 @@ class Articles extends Component {
       </div>
     );
   }
+
+  handleVote = direction => {
+    axios.patch("a").then();
+  };
 
   componentDidMount() {
     if (this.props.match.params.topic) {

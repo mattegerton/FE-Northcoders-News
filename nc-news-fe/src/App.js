@@ -11,8 +11,12 @@ import Users from "./components/Users";
 import Error from "./components/WrongPath";
 import ExpandedArticle from "./components/ExpandedArticle";
 import ExpandedUser from "./components/ExpandedUser";
+import PostArticle from "./components/PostArticle";
 
 class App extends Component {
+  state = {
+    user: "5b740b676ae2b0703855c140"
+  };
   render() {
     return (
       <div className="App">
@@ -28,6 +32,11 @@ class App extends Component {
           />
           <Route exact path="/users" render={() => <Users />} />
           <Route path="/topics/:topic" component={Articles} />
+          <Route
+            exact
+            path="/articles/post"
+            render={() => <PostArticle user={this.state.user} />}
+          />
           <Route path="/articles/:articleID" component={ExpandedArticle} />
           <Route path="/users/:userID" component={ExpandedUser} />
           <Route component={Error} />
