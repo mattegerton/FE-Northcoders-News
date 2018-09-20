@@ -11,3 +11,12 @@
   text-decoration: none;
   color: white;
 }
+
+.navigation-drop {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.navigationLinks {
+  display: grid;
+}

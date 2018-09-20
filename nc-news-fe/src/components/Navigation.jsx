@@ -15,21 +15,21 @@ class Navigation extends Component {
           <div className="navigation-drop">
             <ion-icon onClick={this.menuShowToggle} name="close" />
             <ul>
-              <li>
+              <li class="navigationLinks">
                 <Link to="/topics">
                   <ion-icon name="book" />
                   Topics
                 </Link>
               </li>
 
-              <li>
+              <li class="navigationLinks">
                 <Link to="/articles">
                   <ion-icon name="list-box" />
                   Articles
                 </Link>
               </li>
 
-              <li>
+              <li class="navigationLinks">
                 <Link to="/users">
                   <ion-icon name="contact" />
                   Users

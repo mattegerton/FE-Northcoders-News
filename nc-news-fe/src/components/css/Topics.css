@@ -1,0 +1,11 @@
+#topicGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+#topicLink {
+  background: white;
+  margin: 5%;
+  padding: 5%;
+  color: white;
+}

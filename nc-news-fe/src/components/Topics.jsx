@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
 import axios from "axios";
+import "./css/Topics.css";
 
 class Topics extends Component {
   state = {
@@ -10,25 +11,26 @@ class Topics extends Component {
     return (
       <div>
         <h2> Topics </h2>
-
-        {this.state.topics.map(topic => {
-          return (
-            <Link to={`/topics/${topic.slug}`}>
-              <div key={topic._id}>
-                {topic.slug === "coding" ? (
-                  <ion-icon name="code" />
-                ) : topic.slug === "cooking" ? (
-                  <ion-icon name="pizza" />
-                ) : topic.slug === "football" ? (
-                  <ion-icon name="football" />
-                ) : (
-                  <ion-icon name="alert" />
-                )}
-                <p> {topic.title} </p>
+        <div id="topicGrid">
+          {this.state.topics.map(topic => {
+            return (
+              <div id="topicLink" key={topic._id}>
+                <Link to={`/topics/${topic.slug}`}>
+                  {topic.slug === "coding" ? (
+                    <ion-icon name="code" />
+                  ) : topic.slug === "cooking" ? (
+                    <ion-icon name="pizza" />
+                  ) : topic.slug === "football" ? (
+                    <ion-icon name="football" />
+                  ) : (
+                    <ion-icon name="alert" />
+                  )}
+                  <p> {topic.title} </p>
+                </Link>
               </div>
-            </Link>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     );
   }
