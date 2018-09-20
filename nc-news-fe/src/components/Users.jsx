@@ -13,11 +13,25 @@ class Users extends Component {
         <h2> Users </h2>
         {this.state.users.map(user => {
           return (
-            <div key={user._id} className="userCard">
+            <div key={user._id}>
               <Link to={`/users/${user._id}`}>
-                {user.username}
-                <img src={user.avatar_url} />
-                {user.name}
+                <table className="userCard">
+                  <tbody>
+                    <tr>
+                      <th>{user.username}</th>
+                    </tr>
+                    <tr>
+                      <th>
+                        <img
+                          src={user.avatar_url}
+                          onError={e => {
+                            e.target.src = "https://i.imgflip.com/27q3o0.jpg";
+                          }}
+                        />
+                      </th>
+                    </tr>
+                  </tbody>
+                </table>
               </Link>
             </div>
           );
