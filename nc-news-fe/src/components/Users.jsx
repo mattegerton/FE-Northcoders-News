@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { BrowserRouter, Route, Link } from "react-router-dom";
 import axios from "axios";
 import "./css/User.css";
 
@@ -13,9 +14,11 @@ class Users extends Component {
         {this.state.users.map(user => {
           return (
             <div key={user._id} className="userCard">
-              {user.username}
-              <img src={user.avatar_url} />
-              {user.name}
+              <Link to={`/users/${user._id}`}>
+                {user.username}
+                <img src={user.avatar_url} />
+                {user.name}
+              </Link>
             </div>
           );
         })}

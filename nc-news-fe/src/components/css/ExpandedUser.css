@@ -1,0 +1,10 @@
+#expandedUserCard {
+  background: white;
+  margin: 5% auto;
+  padding: 1%;
+}
+
+#userAvatar {
+  height: 200px;
+  width: auto;
+}

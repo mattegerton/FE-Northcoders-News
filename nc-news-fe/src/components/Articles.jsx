@@ -68,10 +68,13 @@ class Articles extends Component {
   }
 
   componentDidMount() {
-    const params = this.props.match.params.topic;
-    if (params) {
+    if (this.props.match.params.topic) {
       axios
-        .get(`https://nc-news-matt.herokuapp.com/api/topics/${params}/articles`)
+        .get(
+          `https://nc-news-matt.herokuapp.com/api/topics/${
+            this.props.match.params.topic
+          }/articles`
+        )
         .then(data => {
           this.setState({
             articles: data.data.articles
