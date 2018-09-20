@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "./css/Articles.css";
+import { BrowserRouter, Route, Link } from "react-router-dom";
 import moment from "moment";
 
 class Articles extends Component {
@@ -22,36 +23,42 @@ class Articles extends Component {
           .map(article => {
             const previewText = `${article.body.slice(0, 200)}...`;
             return (
-              <div>
-                <table key={article._id} className="articleBlock">
+              <div key={article._id}>
+                <table className="articleBlock">
                   <col width="5%" />
                   <col width="70%" />
-                  <tr>
-                    <th> {article.votes}</th>
-                    <th className="articleBody">
-                      <p className="articleTitle"> {article.title} </p>
-                      {previewText}
-                      <p className="articleFooterText">
-                        {`Posted ${moment(article.created_at)
-                          .startOf("second")
-                          .fromNow()} 
+                  <tbody>
+                    <tr>
+                      <th> {article.votes}</th>
+                      <Link to={`/articles/${article._id}`}>
+                        <th className="articleBody">
+                          <p className="articleTitle"> {article.title} </p>
+                          {previewText}
+                          <p className="articleFooterText">
+                            {`Posted ${moment(article.created_at)
+                              .startOf("second")
+                              .fromNow()} 
                           by ${article.created_by}`}
-                      </p>
-                    </th>
-                    <th>
-                      <ion-icon name="reorder" />
-                    </th>
-                    <th>
-                      <ion-icon name="thumbs-down" />
-                    </th>
-                    <th>
-                      <ion-icon name="thumbs-up" />
-                    </th>
-                    <th>
-                      <ion-icon name="chatboxes" />
-                      {article.comment_count}
-                    </th>
-                  </tr>
+                          </p>
+                        </th>
+                      </Link>
+                      <th>
+                        <Link to={`/articles/${article._id}`}>
+                          <ion-icon name="reorder" />
+                        </Link>
+                      </th>
+                      <th>
+                        <ion-icon name="thumbs-down" />
+                      </th>
+                      <th>
+                        <ion-icon name="thumbs-up" />
+                      </th>
+                      <th>
+                        <ion-icon name="chatboxes" />
+                        {article.comment_count}
+                      </th>
+                    </tr>
+                  </tbody>
                 </table>
               </div>
             );

@@ -9,6 +9,7 @@ import Topics from "./components/Topics";
 import Articles from "./components/Articles";
 import Users from "./components/Users";
 import Error from "./components/WrongPath";
+import ExpandedArticle from "./components/ExpandedArticle";
 
 class App extends Component {
   render() {
@@ -22,6 +23,7 @@ class App extends Component {
           <Route exact path="/articles" render={() => <Articles />} />
           <Route exact path="/users" render={() => <Users />} />
           <Route path="/topics/:topic" component={Articles} />
+          <Route path="/articles/:articleID" component={ExpandedArticle} />
           <Route component={Error} />
         </Switch>
         <Footer />
