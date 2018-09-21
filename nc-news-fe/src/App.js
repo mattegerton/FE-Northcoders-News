@@ -1,6 +1,9 @@
+//packages
 import React, { Component } from "react";
 import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
+//styling
 import "./App.css";
+//components
 import Header from "./components/Header";
 import Navigation from "./components/Navigation";
 import MainContent from "./components/MainContent";
@@ -21,7 +24,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Navigation />
+        <Navigation user={this.state.user} />
         <Switch>
           <Route exact path="/" render={() => <MainContent />} />
           <Route exact path="/topics" render={() => <Topics />} />

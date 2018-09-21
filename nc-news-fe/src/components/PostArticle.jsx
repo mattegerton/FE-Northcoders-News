@@ -8,7 +8,7 @@ class PostArticle extends Component {
     topic: ""
   };
   render() {
-    console.log(this.props);
+    console.log(this.state.topic);
     return (
       <form>
         <label> Title: </label>
@@ -20,7 +20,7 @@ class PostArticle extends Component {
           <option value="coding">Coding</option>
           <option value="football">Football</option>
         </select>
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Submit" onClick={this.handleSubmit} />
       </form>
     );
   }
@@ -46,11 +46,16 @@ class PostArticle extends Component {
   handleSubmit = event => {
     event.preventDefault();
     axios
-      .post(`/api/topics/${this.state.topic}/articles`, {
-        title: this.state.title,
-        body: this.state.body,
-        created_by: this.props.user
-      })
+      .post(
+        `https://nc-news-matt.herokuapp.com/api/topics/${
+          this.state.topic
+        }/articles`,
+        {
+          title: this.state.title,
+          body: this.state.body,
+          created_by: this.props.user
+        }
+      )
       .then(response => {
         console.log(response);
       })
