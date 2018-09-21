@@ -2,8 +2,38 @@ import axios from "axios";
 
 const URL = "https://nc-news-matt.herokuapp.com/api";
 
-//topics
-
 export const getAllTopics = () => {
-  return axios.get(`${URL}/topics`).then(res => res.data);
+  return axios.get(`${URL}/topics`).then(response => response.data);
+  //({data}) => data.topics
+};
+
+export const getArticlesByTopicSlug = topicSlug => {
+  return axios.get(`${URL}/topics/${topicSlug}/articles`);
+};
+
+export const getAllArticles = () => {
+  return axios.get(`${URL}/articles`);
+};
+
+export const getAllUsers = () => {
+  return axios.get(`${URL}/users`);
+};
+
+export const getUserById = params => {
+  return axios.get(`${URL}/users/${params}`);
+};
+
+export const getArticleByArticleId = params => {
+  return axios.get(`${URL}/articles/${params}`);
+};
+
+export const getCommentsByArticleId = params => {
+  return axios.get(`${URL}/articles/${params}/comments`);
+};
+
+export const postArticleToTopic = (params, article) => {
+  return axios.post(
+    `https://nc-news-matt.herokuapp.com/api/topics/${params}/articles`,
+    article
+  );
 };

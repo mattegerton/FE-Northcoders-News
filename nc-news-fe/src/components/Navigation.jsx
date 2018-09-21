@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./css/Navigation.css";
-import { BrowserRouter, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 class Navigation extends Component {
   state = {

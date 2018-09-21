@@ -1,12 +1,13 @@
 import React, { Component } from "react";
-import axios from "axios";
 import "./css/Articles.css";
-import { BrowserRouter, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import * as api from "../api";
 import moment from "moment";
 
 class Articles extends Component {
   state = {
-    articles: []
+    articles: [],
+    newArticle: false
   };
 
   render() {
@@ -76,32 +77,36 @@ class Articles extends Component {
     );
   }
 
-  handleVote = direction => {
-    axios.patch("a").then();
-  };
+  // handleVote = direction => {
+  //   axios.patch("a").then();
+  // };
 
   componentDidMount() {
-    if (this.props.match.params.topic) {
-      axios
-        .get(
-          `https://nc-news-matt.herokuapp.com/api/topics/${
-            this.props.match.params.topic
-          }/articles`
-        )
-        .then(data => {
-          this.setState({
-            articles: data.data.articles
-          });
+    this.getArticles(this.props.match.params.topic);
+  }
+
+  getArticles = params => {
+    if (params !== undefined) {
+      api
+        .getArticlesByTopicSlug(params)
+        .then(response => {
+          this.setState({ articles: response.data.articles });
+        })
+        .catch(error => {
+          console.log(error);
         });
     } else {
-      axios
-        .get("https://nc-news-matt.herokuapp.com/api/articles")
-        .then(data => {
+      api
+        .getAllArticles()
+        .then(response => {
           this.setState({
-            articles: data.data.articles
+            articles: response.data.articles
           });
+        })
+        .catch(error => {
+          console.log(error);
         });
     }
-  }
+  };
 }
 export default Articles;

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import axios from "axios";
+import * as api from "../api";
 import "./css/ExpandedUser.css";
 
 class ExpandedUser extends Component {
@@ -18,6 +18,7 @@ class ExpandedUser extends Component {
             <tr>
               <th>
                 <img
+                  alt="userAvatar"
                   id="userAvatar"
                   src={`${this.state.user.avatar_url}`}
                   onError={e => {
@@ -33,19 +34,16 @@ class ExpandedUser extends Component {
   }
 
   componentDidMount() {
-    axios
-      .get(
-        `https://nc-news-matt.herokuapp.com/api/users/${
-          this.props.match.params.userID
-        }`
-      )
-      .then(data => {
-        console.log(data.data.user, "<---");
-        this.setState({
-          user: data.data.user
-        });
-      });
+    this.getUser(this.props.match.params.userID);
   }
+
+  getUser = params => {
+    api.getUserById(params).then(response => {
+      this.setState({
+        user: response.data.user
+      });
+    });
+  };
 }
 
 export default ExpandedUser;

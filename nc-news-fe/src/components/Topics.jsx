@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./css/Topics.css";
-import PropTypes from "prop-types";
 import * as api from "../api";
 
 class Topics extends Component {

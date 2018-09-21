@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import axios from "axios";
 import "./css/ExpandedArticle.css";
+import * as api from "../api";
 
 class ExpandedArticle extends Component {
   state = {
@@ -8,7 +8,6 @@ class ExpandedArticle extends Component {
     comments: []
   };
   render() {
-    console.log(this.state.comments);
     return (
       <div>
         <table className="articleTable">
@@ -52,23 +51,35 @@ class ExpandedArticle extends Component {
 
   componentDidMount() {
     const articleID = this.props.match.params.articleID;
-    axios
-      .get(`https://nc-news-matt.herokuapp.com/api/articles/${articleID}`)
-      .then(data => {
-        this.setState({
-          article: data.data.article
-        });
-      });
-    axios
-      .get(
-        `https://nc-news-matt.herokuapp.com/api/articles/${articleID}/comments`
-      )
-      .then(data => {
-        this.setState({
-          comments: data.data.comments
-        });
-      });
+    this.getComments(articleID);
+    this.getArticle(articleID);
   }
+
+  getComments = params => {
+    api
+      .getCommentsByArticleId(params)
+      .then(response => {
+        this.setState({
+          comments: response.data.comments
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+
+  getArticle = params => {
+    api
+      .getArticleByArticleId(params)
+      .then(response => {
+        this.setState({
+          article: response.data.article
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
 }
 
 export default ExpandedArticle;

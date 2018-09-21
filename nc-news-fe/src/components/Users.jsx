@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route, Link } from "react-router-dom";
-import axios from "axios";
+import { Link } from "react-router-dom";
 import "./css/User.css";
+import * as api from "../api";
 
 class Users extends Component {
   state = {
@@ -23,6 +23,7 @@ class Users extends Component {
                     <tr>
                       <th>
                         <img
+                          alt="userAvatar"
                           src={user.avatar_url}
                           onError={e => {
                             e.target.src = "https://i.imgflip.com/27q3o0.jpg";
@@ -40,12 +41,21 @@ class Users extends Component {
     );
   }
   componentDidMount() {
-    axios.get("https://nc-news-matt.herokuapp.com/api/users").then(data => {
-      this.setState({
-        users: data.data.users
-      });
-    });
+    this.getAllUsers();
   }
+
+  getAllUsers = () => {
+    api
+      .getAllUsers()
+      .then(response => {
+        this.setState({
+          users: response.data.users
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
 }
 
 export default Users;

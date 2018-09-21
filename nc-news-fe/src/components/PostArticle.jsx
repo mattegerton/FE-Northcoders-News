@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-import axios from "axios";
+import * as api from "../api";
 
 class PostArticle extends Component {
   state = {
     title: "",
     body: "",
-    topic: ""
+    topic: "",
+    posted: false
   };
   render() {
-    console.log(this.state.topic);
     return (
       <form>
         <label> Title: </label>
@@ -45,21 +45,19 @@ class PostArticle extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    axios
-      .post(
-        `https://nc-news-matt.herokuapp.com/api/topics/${
-          this.state.topic
-        }/articles`,
-        {
-          title: this.state.title,
-          body: this.state.body,
-          created_by: this.props.user
-        }
-      )
+    const article = {
+      title: this.state.title,
+      body: this.state.body,
+      created_by: this.props.user
+    };
+    api
+      .postArticleToTopic(this.state.topic, article)
       .then(response => {
-        console.log(response);
+        this.setState({
+          posted: true
+        });
       })
-      .catch(function(error) {
+      .catch(error => {
         console.log(error);
       });
   };
