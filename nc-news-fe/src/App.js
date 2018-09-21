@@ -40,7 +40,12 @@ class App extends Component {
             path="/articles/post"
             render={() => <PostArticle user={this.state.user} />}
           />
-          <Route path="/articles/:articleID" component={ExpandedArticle} />
+          <Route
+            path="/articles/:articleID"
+            render={props => (
+              <ExpandedArticle {...props} user={this.state.user} />
+            )}
+          />
           <Route path="/users/:userID" component={ExpandedUser} />
           <Route component={Error} />
         </Switch>

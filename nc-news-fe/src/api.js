@@ -32,8 +32,9 @@ export const getCommentsByArticleId = params => {
 };
 
 export const postArticleToTopic = (params, article) => {
-  return axios.post(
-    `https://nc-news-matt.herokuapp.com/api/topics/${params}/articles`,
-    article
-  );
+  return axios.post(`${URL}/topics/${params}/articles`, article);
+};
+
+export const postCommentToArticle = (params, comment) => {
+  return axios.post(`${URL}/articles/${params}/comments`, comment);
 };

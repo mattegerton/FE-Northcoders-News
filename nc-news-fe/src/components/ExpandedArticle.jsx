@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./css/ExpandedArticle.css";
 import * as api from "../api";
+import PostComment from "./PostComment";
 
 class ExpandedArticle extends Component {
   state = {
@@ -26,25 +27,43 @@ class ExpandedArticle extends Component {
           </tbody>
         </table>
         Comments
-        {this.state.comments.map(comment => {
-          return (
-            <div>
-              <table className="commentTable">
-                <tbody>
-                  <tr>
-                    <th id="commentVoteCount">{comment.votes}</th>
-                    <th id="commentBody">
-                      {comment.body}
-                      <p id="commentCreator">{`Posted by ${
-                        comment.belongs_to
-                      }`}</p>
-                    </th>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          );
-        })}
+        <br />
+        {this.state.comments.length > 0 ? (
+          <div>
+            {this.state.comments.map(comment => {
+              return (
+                <div>
+                  <table className="commentTable">
+                    <tbody>
+                      <tr>
+                        <th id="commentVoteCount">{comment.votes}</th>
+                        <th id="commentBody">
+                          {comment.body}
+                          <p id="commentCreator">{`Posted by ${
+                            comment.belongs_to
+                          }`}</p>
+                        </th>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              );
+            })}
+            <PostComment
+              user={this.props.user}
+              articleID={this.props.match.params.articleID}
+            />
+          </div>
+        ) : (
+          <div>
+            <p id="noComment">
+              There are no comments yet to show.
+              <br />
+              Be the first to comment on this article!
+            </p>
+            <PostComment articleID={this.props.match.params.articleID} />
+          </div>
+        )}
       </div>
     );
   }

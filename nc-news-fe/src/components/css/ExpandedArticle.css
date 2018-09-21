@@ -44,3 +44,10 @@
 #commentVoteCount {
   padding-right: 3%;
 }
+
+#noComment {
+  color: rgb(143, 143, 143);
+  font-size: 70%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
