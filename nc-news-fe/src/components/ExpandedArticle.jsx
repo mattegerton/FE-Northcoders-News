@@ -7,7 +7,8 @@ class ExpandedArticle extends Component {
   state = {
     article: {},
     comments: [],
-    commentPosted: false
+    commentPosted: false,
+    voted: ""
   };
   render() {
     return (
@@ -28,6 +29,7 @@ class ExpandedArticle extends Component {
             <tr>
               <th>
                 <button
+                  disabled={this.state.voted === "down" ? true : false}
                   onClick={() =>
                     this.articleVote(this.state.article._id, "down")
                   }
@@ -35,6 +37,7 @@ class ExpandedArticle extends Component {
                   <ion-icon name="thumbs-down" />
                 </button>
                 <button
+                  disabled={this.state.voted === "up" ? true : false}
                   onClick={() => this.articleVote(this.state.article._id, "up")}
                 >
                   <ion-icon name="thumbs-up" />
@@ -141,6 +144,7 @@ class ExpandedArticle extends Component {
       selection === "up" ? vote++ : vote--;
       this.setState({
         ...this.state,
+        voted: selection === "up" ? "up" : "down",
         article: {
           ...this.state.article,
           votes: vote
