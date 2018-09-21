@@ -38,3 +38,7 @@ export const postArticleToTopic = (params, article) => {
 export const postCommentToArticle = (params, comment) => {
   return axios.post(`${URL}/articles/${params}/comments`, comment);
 };
+
+export const voteByArticleId = (params, selection) => {
+  return axios.put(`${URL}/articles/${params}?vote=${selection}`);
+};

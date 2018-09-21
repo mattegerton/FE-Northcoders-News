@@ -25,6 +25,23 @@ class ExpandedArticle extends Component {
                 Article posted by {this.state.article.created_by}
               </td>
             </tr>
+            <tr>
+              <th>
+                <button
+                  onClick={() =>
+                    this.articleVote(this.state.article._id, "down")
+                  }
+                >
+                  <ion-icon name="thumbs-down" />
+                </button>
+                <button
+                  onClick={() => this.articleVote(this.state.article._id, "up")}
+                >
+                  <ion-icon name="thumbs-up" />
+                </button>
+              </th>
+              <tr id="voteCount">{`${this.state.article.votes} likes`}</tr>
+            </tr>
           </tbody>
         </table>
         Comments
@@ -115,6 +132,21 @@ class ExpandedArticle extends Component {
       .catch(error => {
         console.log(error);
       });
+  };
+
+  articleVote = (params, selection) => {
+    api.voteByArticleId(params, selection).then(response => {
+      console.log(response);
+      let vote = this.state.article.votes;
+      selection === "up" ? vote++ : vote--;
+      this.setState({
+        ...this.state,
+        article: {
+          ...this.state.article,
+          votes: vote
+        }
+      });
+    });
   };
 }
 

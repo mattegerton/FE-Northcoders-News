@@ -51,3 +51,8 @@
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
+#voteCount {
+  text-align: center;
+  font-size: 60%;
+}
