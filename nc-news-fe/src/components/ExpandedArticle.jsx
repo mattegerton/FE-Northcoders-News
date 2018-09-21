@@ -6,7 +6,8 @@ import PostComment from "./PostComment";
 class ExpandedArticle extends Component {
   state = {
     article: {},
-    comments: []
+    comments: [],
+    commentPosted: false
   };
   render() {
     return (
@@ -52,6 +53,7 @@ class ExpandedArticle extends Component {
             <PostComment
               user={this.props.user}
               articleID={this.props.match.params.articleID}
+              commentPosted={this.commentPosted}
             />
           </div>
         ) : (
@@ -61,7 +63,11 @@ class ExpandedArticle extends Component {
               <br />
               Be the first to comment on this article!
             </p>
-            <PostComment articleID={this.props.match.params.articleID} />
+            <PostComment
+              user={this.props.user}
+              articleID={this.props.match.params.articleID}
+              commentPosted={this.commentPosted}
+            />
           </div>
         )}
       </div>
@@ -72,6 +78,11 @@ class ExpandedArticle extends Component {
     const articleID = this.props.match.params.articleID;
     this.getComments(articleID);
     this.getArticle(articleID);
+  }
+
+  componentDidUpdate() {
+    const articleID = this.props.match.params.articleID;
+    this.getComments(articleID);
   }
 
   getComments = params => {
@@ -85,6 +96,12 @@ class ExpandedArticle extends Component {
       .catch(error => {
         console.log(error);
       });
+  };
+
+  commentPosted = () => {
+    this.setState({
+      commentPosted: true
+    });
   };
 
   getArticle = params => {

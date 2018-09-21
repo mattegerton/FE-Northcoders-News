@@ -46,7 +46,7 @@ class PostComment extends Component {
       created_by: this.props.user
     };
     api.postCommentToArticle(this.props.articleID, comment).then(response => {
-      console.log(response);
+      this.props.commentPosted();
       this.setState({
         body: "",
         commentPosted: true
