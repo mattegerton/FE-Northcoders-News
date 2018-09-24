@@ -48,5 +48,5 @@ TBC
 ## Acknowledgments
 
 * Northcoders
-* React Documentation
+
 
