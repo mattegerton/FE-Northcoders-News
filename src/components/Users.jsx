@@ -29,28 +29,6 @@ class Users extends Component {
                   <div className="userRecentPosts">{user.name}</div>
                 </NavLink>
               </div>
-              // <div key={user._id}>
-              //   <Link to={`/users/${user._id}`}>
-              //     <table className="userCard">
-              //       <tbody>
-              //         <tr>
-              //           <th>{user.username}</th>
-              //         </tr>
-              //         <tr>
-              //           <th>
-              //             <img
-              //               alt="userAvatar"
-              //               src={user.avatar_url}
-              //               onError={e => {
-              //                 e.target.src = "https://i.imgflip.com/27q3o0.jpg";
-              //               }}
-              //             />
-              //           </th>
-              //         </tr>
-              //       </tbody>
-              //     </table>
-              //   </Link>
-              // </div>
             );
           })}
         </div>
