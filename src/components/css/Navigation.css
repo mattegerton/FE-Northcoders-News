@@ -1,24 +1,28 @@
 .navigation-top {
   background: #262c2d;
-  color: white;
-  text-align: center;
-}
-
-.navigation-top ul {
-  list-style: none;
-}
-
-.navigation-drop ul li {
-  text-decoration: none;
-  color: white;
+  padding: 0.5%;
+  font-size: 150%;
 }
 
 .navigation-drop {
-  display: inline-block;
+  width: 100%;
 }
 
 .navigationLinks {
-  display: grid;
+  display: inline-flex;
+  align-items: flex-start;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: left;
   text-decoration: none;
   font-size: 150%;
+  padding: 1.5%;
+}
+
+.navLinkStyle {
+  text-decoration: none;
+  color: white;
+  font-weight: 100;
+  font-size: 60%;
+  flex-grow: 1;
 }

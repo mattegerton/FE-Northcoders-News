@@ -1,6 +1,6 @@
 import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
 import "./css/Navigation.css";
-import { Link } from "react-router-dom";
 
 class Navigation extends Component {
   state = {
@@ -9,36 +9,60 @@ class Navigation extends Component {
   render() {
     return (
       <div className="navigation-top">
-        {this.state.showMenu === false ? (
+        {this.state.showMenu === true ? (
           <ion-icon onClick={this.menuShowToggle} name="apps" />
         ) : (
           <div className="navigation-drop">
             <ion-icon onClick={this.menuShowToggle} name="close" />
-            <tr>
-              <th className="navigationLinks">
-                <Link to="/topics">
-                  <ion-icon name="book" />
+            <div>
+              <div className="navigationLinks">
+                <NavLink to="/topics" className="navLinkStyle">
+                  <ion-icon name="book" className="navIcon" />
                   <br />
                   Topics
-                </Link>
-              </th>
+                </NavLink>
+              </div>
 
-              <th className="navigationLinks">
-                <Link to="/articles">
-                  <ion-icon name="list-box" />
+              <div className="navigationLinks">
+                <NavLink to="/articles" className="navLinkStyle">
+                  <ion-icon name="list-box" className="navIcon" />
                   <br />
                   Articles
-                </Link>
-              </th>
+                </NavLink>
+              </div>
 
-              <th className="navigationLinks">
-                <Link to="/users">
-                  <ion-icon name="contact" />
+              <div className="navigationLinks">
+                <NavLink to="/users" className="navLinkStyle">
+                  <ion-icon name="contact" className="navIcon" />
                   <br />
                   Users
-                </Link>
-              </th>
-            </tr>
+                </NavLink>
+              </div>
+
+              <div className="navigationLinks">
+                <NavLink to="/topics/code" className="navLinkStyle">
+                  <ion-icon name="code" className="navIcon" />
+                  <br />
+                  Coding
+                </NavLink>
+              </div>
+
+              <div className="navigationLinks">
+                <NavLink to="/topics/cooking" className="navLinkStyle">
+                  <ion-icon name="pizza" className="navIcon" />
+                  <br />
+                  Cooking
+                </NavLink>
+              </div>
+
+              <div className="navigationLinks">
+                <NavLink to="/topics/football" className="navLinkStyle">
+                  <ion-icon name="football" className="navIcon" />
+                  <br />
+                  Football
+                </NavLink>
+              </div>
+            </div>
           </div>
         )}
       </div>
