@@ -1,14 +1,16 @@
 .articleBlock {
   background: white;
-  margin: 5px;
+  margin: 8px;
   padding: 10px;
+  width: 60%;
 }
 
 .articleBody {
   font-weight: 300;
   color: #262c2d;
   text-align: justify;
-  font-size: 80%;
+  font-size: 100%;
+  float: left;
 }
 
 .articleTitle {

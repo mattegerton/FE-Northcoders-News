@@ -16,10 +16,12 @@ class Articles extends Component {
     return (
       <div>
         <h2> Articles </h2>
-        <Link to="/articles/post">Post an article!</Link>
+        <button>
+          <Link to="/articles/post">Post an article!</Link>
+        </button>
         {this.state.error.code && (
           <Redirect
-            to={{ pathname: "/error", state: { error: this.state.error } }}
+            to={{ pathname: "/WrongPath", state: { error: this.state.error } }}
           />
         )}
         {[...articles]
