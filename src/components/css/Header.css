@@ -1,8 +1,14 @@
 h1 {
   color: white;
   font-weight: 100;
+  font-size: 300%;
 }
 
 .header {
   background: #ac3636;
+  padding: 2%;
+}
+
+.linkStyle {
+  text-decoration: none;
 }
