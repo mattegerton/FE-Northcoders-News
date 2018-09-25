@@ -1,8 +1,29 @@
 .mainContentButton {
+  margin: 20px;
+  color: #ac3636;
+  border: none;
+  margin-bottom: 7%;
+}
+
+.mainContentButton button {
   font-size: 250%;
   margin: 20px;
   padding: 5%;
   color: #ac3636;
   border: none;
   background: white;
+  margin-bottom: 7%;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.mainContentButton :hover {
+  background: #ac3636;
+  color: white;
+}
+
+h3 {
+  font-size: 150%;
+  padding: 2%;
+  font-weight: 200;
 }
