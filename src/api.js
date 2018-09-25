@@ -42,3 +42,11 @@ export const postCommentToArticle = (params, comment) => {
 export const voteByArticleId = (params, selection) => {
   return axios.put(`${URL}/articles/${params}?vote=${selection}`);
 };
+
+export const voteByCommentId = (params, selection) => {
+  return axios.put(`${URL}/comments/${params}?vote=${selection}`);
+};
+
+export const deleteComment = params => {
+  return axios.delete(`${URL}/comments/${params}`);
+};

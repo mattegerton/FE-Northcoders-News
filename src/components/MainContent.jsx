@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import "./css/MainContent.css";
 
 class MainContent extends Component {
   render() {
@@ -8,22 +9,25 @@ class MainContent extends Component {
         <h3> Main Content</h3>
 
         <Link to="/topics">
-          <button>
+          <button className="mainContentButton">
             <ion-icon name="book" />
+            <br />
             Topics
           </button>
         </Link>
 
         <Link to="/articles">
-          <button>
+          <button className="mainContentButton">
             <ion-icon name="list-box" />
+            <br />
             Articles
           </button>
         </Link>
 
         <Link to="/users">
-          <button>
+          <button className="mainContentButton">
             <ion-icon name="contact" />
+            <br />
             Users
           </button>
         </Link>

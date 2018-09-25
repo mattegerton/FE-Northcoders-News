@@ -1,6 +1,7 @@
 .navigation-top {
   background: #262c2d;
   color: white;
+  text-align: center;
 }
 
 .navigation-top ul {
@@ -13,10 +14,11 @@
 }
 
 .navigation-drop {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  display: inline-block;
 }
 
 .navigationLinks {
   display: grid;
+  text-decoration: none;
+  font-size: 150%;
 }

@@ -14,7 +14,7 @@
   text-transform: uppercase;
   font-size: 130%;
   text-align: center;
-  padding-bottom: 0.5%;
+  padding-bottom: 2%;
 }
 
 #articleCreator {
@@ -27,6 +27,11 @@
   margin-top: 1%;
   font-size: 50%;
   color: #a0423a;
+}
+
+#articleBody {
+  padding-top: 2%;
+  font-size: 70%;
 }
 
 #articleBody,
@@ -55,4 +60,13 @@
 #voteCount {
   text-align: center;
   font-size: 60%;
+}
+
+.articleImage {
+  max-width: 75%;
+  max-height: 50%;
+}
+
+#tableImage {
+  text-align: center;
 }

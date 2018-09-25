@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import "./css/Articles.css";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import * as api from "../api";
 import moment from "moment";
 
 class Articles extends Component {
   state = {
     articles: [],
-    newArticle: false
+    newArticle: false,
+    error: {}
   };
 
   render() {
@@ -16,6 +17,11 @@ class Articles extends Component {
       <div>
         <h2> Articles </h2>
         <Link to="/articles/post">Post an article!</Link>
+        {this.state.error.code && (
+          <Redirect
+            to={{ pathname: "/error", state: { error: this.state.error } }}
+          />
+        )}
         {[...articles]
           .sort((a, b) => {
             const c = new Date(a.created_at);
@@ -55,11 +61,7 @@ class Articles extends Component {
                         </button>
                       </th>
                       <th>
-                        <button
-                          onClick={() => {
-                            this.handleVote("up");
-                          }}
-                        >
+                        <button>
                           <ion-icon name="thumbs-up" />
                         </button>
                       </th>
@@ -105,6 +107,12 @@ class Articles extends Component {
         })
         .catch(error => {
           console.log(error);
+          this.setState({
+            error: {
+              statusCode: error.response.status,
+              message: error.response.data.message
+            }
+          });
         });
     }
   };
