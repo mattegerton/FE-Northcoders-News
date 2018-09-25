@@ -1,0 +1,41 @@
+.articleWrapper {
+  display: flex;
+  background: white;
+  margin: 1%;
+  padding: 0.5%;
+  text-align: left;
+  font-size: 120%;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.articleOptions {
+  align-items: center;
+  display: flex;
+  text-decoration: none;
+}
+
+.articleOptions button {
+  background: white;
+  color: #ac3636;
+  font-size: 120%;
+  border: none;
+  margin: 5px;
+}
+
+.articlesLink {
+  text-decoration: none;
+  width: 800%;
+}
+
+#articlesText {
+  width: 300px;
+}
+
+#prevText {
+  color: #262c2d;
+}
+
+.articleFooterText {
+  color: #ac3636;
+}
