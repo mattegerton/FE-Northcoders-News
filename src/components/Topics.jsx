@@ -10,12 +10,13 @@ class Topics extends Component {
   render() {
     return (
       <div>
-        <h2> Topics </h2>
+        <h3> Select a topic </h3>
+
         <div id="topicGrid">
           {this.state.topics.map(topic => {
             return (
-              <div id="topicLink" key={topic._id}>
-                <Link to={`/topics/${topic.slug}`}>
+              <Link to={`/topics/${topic.slug}`} className="topicLink">
+                <div key={topic._id} className="topicButton">
                   {topic.slug === "coding" ? (
                     <ion-icon name="code" />
                   ) : topic.slug === "cooking" ? (
@@ -25,9 +26,10 @@ class Topics extends Component {
                   ) : (
                     <ion-icon name="alert" />
                   )}
-                  <p> {topic.title} </p>
-                </Link>
-              </div>
+                  <br />
+                  {topic.title}
+                </div>
+              </Link>
             );
           })}
         </div>
