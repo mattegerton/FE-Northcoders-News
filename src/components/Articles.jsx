@@ -12,7 +12,6 @@ class Articles extends Component {
   };
 
   render() {
-    const { articles } = this.state;
     return (
       <div>
         <h3> Articles </h3>

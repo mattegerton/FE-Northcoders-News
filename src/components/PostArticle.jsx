@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import * as api from "../api";
+import { Link } from "react-router-dom";
 import "./css/PostArticle.css";
 
 class PostArticle extends Component {
@@ -10,7 +11,16 @@ class PostArticle extends Component {
     posted: false
   };
   render() {
-    return (
+    return this.state.posted ? (
+      <div>
+        <h3>Your article has been posted! </h3>
+        <Link to="/articles">
+          <button id="articlePostedButton">
+            Take me back to the article page!
+          </button>
+        </Link>
+      </div>
+    ) : (
       <div>
         <h3> Post your article! </h3>
         <h6> Just enter a title, choose a topic and post away! </h6>

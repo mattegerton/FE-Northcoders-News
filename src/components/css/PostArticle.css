@@ -29,3 +29,14 @@
 .articeFormRow select {
   padding: 0.5em;
 }
+
+#articlePostedButton {
+  border: none;
+  background: white;
+  color: #2b3031;
+  padding: 2%;
+  font-size: 120%;
+  margin: 5%;
+  border-radius: 50px;
+  cursor: pointer;
+}
