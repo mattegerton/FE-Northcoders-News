@@ -1,0 +1,31 @@
+.articleFormRow {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.5em;
+  border-radius: 3px;
+  font-size: 120%;
+  width: 80%;
+}
+
+.articleFormRow input,
+.articleFormRow select,
+.articleFormRow textarea {
+  flex: 2;
+  text-align: center;
+  display: flex;
+}
+
+.articleFormRow textarea {
+  align-content: center;
+  overflow: auto;
+}
+
+.articleFormRow label {
+  flex: 1;
+  padding: 0.5em 1em 0.5em 0;
+}
+
+.articeFormRow input,
+.articeFormRow select {
+  padding: 0.5em;
+}

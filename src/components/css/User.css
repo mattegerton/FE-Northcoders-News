@@ -1,8 +1,23 @@
 .userCard img {
-  height: 100px;
+  height: 200px;
   width: auto;
 }
 
-.userCard {
-  margin: 5% auto;
+.userLink {
+  text-decoration: none;
+  color: #2b3031;
+}
+
+.usersWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  max-height: 100vh;
+  align-items: stretch;
+}
+
+.userWrapper {
+  font-size: 120%;
+  background: white;
+  margin: 2% auto;
 }

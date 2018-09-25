@@ -11,7 +11,6 @@ class Topics extends Component {
     return (
       <div>
         <h3> Select a topic </h3>
-
         <div id="topicGrid">
           {this.state.topics.map(topic => {
             return (

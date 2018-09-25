@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import * as api from "../api";
+import "./css/PostArticle.css";
 
 class PostArticle extends Component {
   state = {
@@ -10,18 +11,38 @@ class PostArticle extends Component {
   };
   render() {
     return (
-      <form>
-        <label> Title: </label>
-        <input onChange={this.handleArticleTitle} />
-        <label> Body: </label>
-        <textarea onChange={this.handleArticleBody} />
-        <select id="selectTopic" onChange={this.handleArticleTopic}>
-          <option value="cooking">Cooking</option>
-          <option value="coding">Coding</option>
-          <option value="football">Football</option>
-        </select>
-        <input type="submit" value="Submit" onClick={this.handleSubmit} />
-      </form>
+      <div>
+        <h3> Post your article! </h3>
+        <h6> Just enter a title, choose a topic and post away! </h6>
+
+        <form>
+          <div className="articleForm">
+            <div className="articleFormRow">
+              <label> Title: </label>
+              <input onChange={this.handleArticleTitle} />
+            </div>
+
+            <div className="articleFormRow">
+              <label> Topic: </label>
+              <select onChange={this.handleArticleTopic}>
+                <option value="cooking">Cooking</option>
+                <option value="coding">Coding</option>
+                <option value="football">Football</option>
+              </select>
+            </div>
+
+            <div className="articleFormRow">
+              <label> Body: </label>
+              <textarea clos="50" rows="10" onChange={this.handleArticleBody} />
+            </div>
+
+            <div className="articleFormRow">
+              <label> Post: </label>
+              <input type="submit" value="Submit" onClick={this.handleSubmit} />
+            </div>
+          </div>
+        </form>
+      </div>
     );
   }
 
