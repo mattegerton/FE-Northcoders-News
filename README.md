@@ -34,7 +34,7 @@ npm start
 
 ## Deployment
 
-TBC
+Deployed using [Netlify](https://www.netlify.com/). You can visit a live version [here](https://vigorous-yalow-2b97a3.netlify.com/)
 
 ## Built With
 
