@@ -1,0 +1,14 @@
+.errorAlert {
+  padding-top: 5%;
+  padding-bottom: 1%;
+  font-size: 120%;
+}
+
+#takeMeBackButton {
+  margin-bottom: 5%;
+  border: none;
+  border-radius: 50px;
+  padding: 0.5%;
+  padding-left: 1%;
+  padding-right: 1%;
+}
