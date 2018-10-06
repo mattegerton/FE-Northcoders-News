@@ -36,7 +36,18 @@ class Articles extends Component {
       api
         .getArticlesByTopicSlug(params)
         .then(response => {
-          this.setState({ articles: response.data.articles });
+          let articlesData = response.data.articles.map(article => {
+            console.log(article.created_by);
+            return {
+              ...article,
+              created_by: article.created_by
+                ? article.created_by.username
+                : "Guest"
+            };
+          });
+          this.setState({
+            articles: articlesData
+          });
         })
         .catch(error => {
           console.log(error);
