@@ -13,7 +13,7 @@ class Navigation extends Component {
           <ion-icon onClick={this.menuShowToggle} name="apps" />
         ) : (
           <div className="navigation-drop">
-            <ion-icon onClick={this.menuShowToggle} name="close" />
+            <ion-icon onClick={this.menuShowToggle} name="arrow-dropup" />
             <div>
               <div className="navigationLinks">
                 <NavLink to="/topics" className="navLinkStyle">

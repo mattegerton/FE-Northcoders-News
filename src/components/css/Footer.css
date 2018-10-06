@@ -1,5 +1,6 @@
 .footer {
   background: #262c2d;
+  padding: 5px;
   font-weight: 100;
   font-size: 50%;
   color: white;
@@ -7,5 +8,12 @@
 
 .footerSocial {
   color: white;
-  font-size: 150%;
+  font-size: 200%;
+}
+
+.footerSocialIcon {
+  text-decoration: none;
+  padding: 5px;
+  color: white;
+  margin-bottom: 5px;
 }

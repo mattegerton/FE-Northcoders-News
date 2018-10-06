@@ -2,6 +2,9 @@
   background: white;
   margin: 5% auto;
   padding: 1%;
+  border: 1px solid;
+  padding: 10px;
+  box-shadow: 2px 2px #888888;
 }
 
 #userAvatar {

@@ -7,6 +7,9 @@
   font-size: 120%;
   align-items: center;
   flex-wrap: nowrap;
+  border: 1px solid;
+  padding: 10px;
+  box-shadow: 2px 2px #888888;
 }
 
 .articleOptions {

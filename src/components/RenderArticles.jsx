@@ -33,15 +33,6 @@ class RenderArticles extends Component {
                   <ion-icon name="reorder" />
                 </Link>
               </button>
-
-              <button>
-                <ion-icon name="thumbs-down" />
-              </button>
-
-              <button>
-                <ion-icon name="thumbs-up" />
-              </button>
-
               <button>
                 <ion-icon name="chatboxes" />
                 {article.comment_count}

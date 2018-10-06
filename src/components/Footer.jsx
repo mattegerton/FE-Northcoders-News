@@ -1,16 +1,45 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./css/Footer.css";
 
 const Footer = () => {
   let date = new Date();
   return (
     <div className="footer">
-      <h4> Copyright © {date.getFullYear()} Matt Egerton </h4>
       <div className="footerSocial">
-        <ion-icon name="logo-facebook" />
-        <ion-icon name="logo-twitter" />
-        <ion-icon name="logo-github" />
+        <a
+          className="footerSocialIcon"
+          href="https://www.facebook.com/megerton"
+          target="_blank"
+        >
+          <ion-icon name="logo-facebook" />
+        </a>
+
+        <a
+          className="footerSocialIcon"
+          href="https://twitter.com/matthewjegerton"
+          target="_blank"
+        >
+          <ion-icon name="logo-twitter" />
+        </a>
+
+        <a
+          className="footerSocialIcon"
+          href="https://github.com/mattegerton"
+          target="_blank"
+        >
+          <ion-icon name="logo-github" />
+        </a>
+
+        <a
+          className="footerSocialIcon"
+          href="https://www.linkedin.com/in/matthewjegerton/"
+          target="_blank"
+        >
+          <ion-icon name="logo-linkedin" />
+        </a>
       </div>
+      <h4> Copyright © {date.getFullYear()} Matt Egerton </h4>
     </div>
   );
 };
