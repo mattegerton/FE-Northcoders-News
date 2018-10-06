@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import "./css/Navigation.css";
 
 class Navigation extends Component {
@@ -40,27 +40,27 @@ class Navigation extends Component {
               </div>
 
               <div className="navigationLinks">
-                <NavLink to="/topics/code" className="navLinkStyle">
+                <Link to="/topics/coding" className="navLinkStyle">
                   <ion-icon name="code" className="navIcon" />
                   <br />
                   Coding
-                </NavLink>
+                </Link>
               </div>
 
               <div className="navigationLinks">
-                <NavLink to="/topics/cooking" className="navLinkStyle">
+                <Link to="/topics/cooking" className="navLinkStyle">
                   <ion-icon name="pizza" className="navIcon" />
                   <br />
                   Cooking
-                </NavLink>
+                </Link>
               </div>
 
               <div className="navigationLinks">
-                <NavLink to="/topics/football" className="navLinkStyle">
+                <Link to="/topics/football" className="navLinkStyle">
                   <ion-icon name="football" className="navIcon" />
                   <br />
                   Football
-                </NavLink>
+                </Link>
               </div>
             </div>
           </div>

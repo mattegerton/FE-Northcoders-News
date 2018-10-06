@@ -8,7 +8,8 @@ class Articles extends Component {
   state = {
     articles: [],
     newArticle: false,
-    error: {}
+    error: {},
+    topic: ""
   };
 
   render() {
@@ -31,6 +32,12 @@ class Articles extends Component {
     this.getArticles(this.props.match.params.topic);
   }
 
+  componentDidUpdate() {
+    if (this.state.topic !== this.props.match.params.topic) {
+      this.getArticles(this.props.match.params.topic);
+    }
+  }
+
   getArticles = params => {
     if (params !== undefined) {
       api
@@ -46,7 +53,8 @@ class Articles extends Component {
             };
           });
           this.setState({
-            articles: articlesData
+            articles: articlesData,
+            topic: params
           });
         })
         .catch(error => {
@@ -59,7 +67,7 @@ class Articles extends Component {
           const articlesData = response.data.articles.map(article => {
             return {
               ...article,
-              created_by: article.created_by.username
+              created_by: article.created_by
                 ? article.created_by.username
                 : "Guest"
             };

@@ -34,7 +34,7 @@ class App extends Component {
             render={props => <Articles {...props} />}
           />
           <Route exact path="/users" render={() => <Users />} />
-          <Route path="/topics/:topic" component={Articles} />
+          <Route exact path="/topics/:topic" component={Articles} />
           <Route
             exact
             path="/articles/post"
