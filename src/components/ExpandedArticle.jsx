@@ -162,8 +162,13 @@ class ExpandedArticle extends Component {
     api
       .getArticleByArticleId(params)
       .then(response => {
+        console.log(response, "<<<<<<<<<<<<<");
+        const articleData = {
+          ...response.data.article,
+          created_by: response.data.article.created_by.username
+        };
         this.setState({
-          article: response.data.article
+          article: articleData
         });
       })
       .catch(error => {

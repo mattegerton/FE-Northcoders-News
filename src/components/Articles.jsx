@@ -48,8 +48,17 @@ class Articles extends Component {
       api
         .getAllArticles()
         .then(response => {
+          const articlesData = response.data.articles.map(article => {
+            return {
+              ...article,
+              created_by: article.created_by.username
+                ? article.created_by.username
+                : "Guest"
+            };
+          });
+          console.log(articlesData);
           this.setState({
-            articles: response.data.articles
+            articles: articlesData
           });
         })
         .catch(error => {
