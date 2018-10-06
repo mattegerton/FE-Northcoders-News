@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./css/Footer.css";
 
 const Footer = () => {
@@ -11,6 +10,7 @@ const Footer = () => {
           className="footerSocialIcon"
           href="https://www.facebook.com/megerton"
           target="_blank"
+          rel="noopener noreferrer"
         >
           <ion-icon name="logo-facebook" />
         </a>
@@ -19,6 +19,7 @@ const Footer = () => {
           className="footerSocialIcon"
           href="https://twitter.com/matthewjegerton"
           target="_blank"
+          rel="noopener noreferrer"
         >
           <ion-icon name="logo-twitter" />
         </a>
@@ -27,6 +28,7 @@ const Footer = () => {
           className="footerSocialIcon"
           href="https://github.com/mattegerton"
           target="_blank"
+          rel="noopener noreferrer"
         >
           <ion-icon name="logo-github" />
         </a>
@@ -35,6 +37,7 @@ const Footer = () => {
           className="footerSocialIcon"
           href="https://www.linkedin.com/in/matthewjegerton/"
           target="_blank"
+          rel="noopener noreferrer"
         >
           <ion-icon name="logo-linkedin" />
         </a>

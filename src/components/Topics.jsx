@@ -14,7 +14,11 @@ class Topics extends Component {
         <div id="topicGrid">
           {this.state.topics.map(topic => {
             return (
-              <Link to={`/topics/${topic.slug}`} className="topicLink">
+              <Link
+                to={`/topics/${topic.slug}`}
+                key={topic.slug}
+                className="topicLink"
+              >
                 <div key={topic._id} className="topicButton">
                   {topic.slug === "coding" ? (
                     <ion-icon name="code" />

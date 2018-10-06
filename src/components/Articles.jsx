@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./css/Articles.css";
-import { Link, Redirect, Route } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 import * as api from "../api";
 import RenderArticles from "./RenderArticles";
 
@@ -12,34 +12,18 @@ class Articles extends Component {
   };
 
   render() {
-    return (
-      // <div>
-      //   <h3> Articles </h3>
-      //   <button id="articlePostBtn">
-      //     <Link className="articleButton" to="/articles/post">
-      //       Post an article!
-      //     </Link>
-      //   </button>
-      //   {this.state.error.code && (
-      //     <Redirect
-      //       to={{ pathname: "/WrongPath", state: { error: this.state.error } }}
-      //     />
-      //   )}
-      //   <RenderArticles articles={this.state.articles} />
-      // </div>
-      this.state.error.code ? (
-        <Route component={Error} />
-      ) : (
-        <div>
-          <h3> Articles </h3>
-          <button id="articlePostBtn">
-            <Link className="articleButton" to="/articles/post">
-              Post an article!
-            </Link>
-          </button>
-          <RenderArticles articles={this.state.articles} />
-        </div>
-      )
+    return this.state.error.code ? (
+      <Route component={Error} />
+    ) : (
+      <div>
+        <h3> Articles </h3>
+        <button id="articlePostBtn">
+          <Link className="articleButton" to="/articles/post">
+            Post an article!
+          </Link>
+        </button>
+        <RenderArticles articles={this.state.articles} />
+      </div>
     );
   }
 
@@ -69,7 +53,6 @@ class Articles extends Component {
                 : "Guest"
             };
           });
-          console.log(articlesData);
           this.setState({
             articles: articlesData
           });

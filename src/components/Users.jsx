@@ -14,7 +14,7 @@ class Users extends Component {
         <div className="usersWrapper">
           {this.state.users.map(user => {
             return (
-              <div className="userWrapper">
+              <div className="userWrapper" key={user.username}>
                 <NavLink to={`/users/${user._id}`} className="userLink">
                   <div className="userCard">
                     <h2> {user.username} </h2>
