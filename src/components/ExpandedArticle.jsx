@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import "./css/ExpandedArticle.css";
 import * as api from "../api";
 import PostComment from "./PostComment";
+import Error from "./WrongPath";
+const isEmpty = require("lodash.isempty");
 
 class ExpandedArticle extends Component {
   state = {
@@ -9,10 +11,11 @@ class ExpandedArticle extends Component {
     comments: [],
     commentPosted: false,
     voted: "",
-    commentVoted: ""
+    commentVoted: "",
+    error: {}
   };
   render() {
-    return (
+    return isEmpty(this.state.error) ? (
       <div>
         <table className="articleTable">
           <tbody>
@@ -131,6 +134,8 @@ class ExpandedArticle extends Component {
           </div>
         )}
       </div>
+    ) : (
+      <Error />
     );
   }
 
@@ -162,7 +167,6 @@ class ExpandedArticle extends Component {
     api
       .getArticleByArticleId(params)
       .then(response => {
-        console.log(response, "<<<<<<<<<<<<<");
         const articleData = {
           ...response.data.article,
           created_by: response.data.article.created_by.username
@@ -173,6 +177,12 @@ class ExpandedArticle extends Component {
       })
       .catch(error => {
         console.log(error);
+        this.setState({
+          error: {
+            statusCode: error.response.status,
+            message: error.response.data.message
+          }
+        });
       });
   };
 
