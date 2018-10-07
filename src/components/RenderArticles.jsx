@@ -9,7 +9,7 @@ class RenderArticles extends Component {
       .sort((a, b) => {
         const c = new Date(a.created_at);
         const d = new Date(b.created_at);
-        return d - c;
+        return c - d;
       })
       .map(article => {
         const previewText = `${article.body.slice(0, 200)}...`;

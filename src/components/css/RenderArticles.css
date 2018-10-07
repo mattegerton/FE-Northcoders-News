@@ -18,6 +18,11 @@
   text-decoration: none;
 }
 
+.textInput {
+  text-align: left;
+  font-size: 110%;
+}
+
 .articleOptions button {
   background: white;
   color: #ac3636;
@@ -41,4 +46,23 @@
 
 .articleFooterText {
   color: #ac3636;
+}
+
+#submitArticle {
+  cursor: pointer;
+  font-size: 80%;
+  color: white;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  border-style: none;
+  border-radius: 50px;
+  background: #ac3636;
+  transition: 0.5s;
+}
+
+#submitArticle:hover {
+  background: white;
+  color: #ac3636;
+  border: 1px solid #ac3636;
 }

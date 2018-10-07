@@ -35,6 +35,9 @@ class PostArticle extends Component {
             <div className="articleFormRow">
               <label> Topic: </label>
               <select onChange={this.handleArticleTopic}>
+                <option value="" disabled selected>
+                  Select your topic
+                </option>
                 <option value="cooking">Cooking</option>
                 <option value="coding">Coding</option>
                 <option value="football">Football</option>
@@ -48,7 +51,12 @@ class PostArticle extends Component {
 
             <div className="articleFormRow">
               <label> Post: </label>
-              <input type="submit" value="Submit" onClick={this.handleSubmit} />
+              <input
+                id="submitArticle"
+                type="submit"
+                value="Submit"
+                onClick={this.handleSubmit}
+              />
             </div>
           </div>
         </form>
