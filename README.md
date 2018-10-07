@@ -2,15 +2,19 @@
 
 A front end React project to host the API that was built: [here](https://github.com/mattegerton/BE2-northcoders-news).
 
+Deployed using [Netlify](https://www.netlify.com/). You can visit a live version [here](https://vigorous-yalow-2b97a3.netlify.com/).
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
 
 ### Prerequisites
 
-To get started just fork and clone this project and run the following command in your terminal:
+To get started just fork and clone this project and run the following commands in your terminal:
 
 ```
+git clone [Copy the link from your forked repo]
+cd FE-Northcoders-News
 npm install
 ```
 This will install the following packages: 
@@ -31,10 +35,6 @@ Simply enter the following command into your terminal to run a local version of 
 ```
 npm start
 ```
-
-## Deployment
-
-Deployed using [Netlify](https://www.netlify.com/). You can visit a live version [here](https://vigorous-yalow-2b97a3.netlify.com/)
 
 ## Built With
 
