@@ -1,6 +1,6 @@
 # Northcoders News
 
-A front end React project to host the API that was built: [here](https://github.com/mattegerton/BE2-northcoders-news).
+A front end React project to host the API that was built: [here](https://nc-news-mattegerton.netlify.com/).
 
 Deployed using [Netlify](https://www.netlify.com/). You can visit a live version [here](https://vigorous-yalow-2b97a3.netlify.com/).
 
