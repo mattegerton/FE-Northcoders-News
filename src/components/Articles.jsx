@@ -5,6 +5,7 @@ import * as api from "../api";
 import RenderArticles from "./RenderArticles";
 import { connect } from "react-redux";
 import { fetchArticles } from "../actions/articleActions";
+import PropTypes from "prop-types";
 
 class Articles extends Component {
   // state = {
@@ -95,6 +96,12 @@ class Articles extends Component {
   //   }
   // };
 }
+
+Articles.propTypes = {
+  fetchArticles: PropTypes.func.isRequired,
+  articles: PropTypes.array.isRequired,
+  topic: PropTypes.string
+};
 
 const mapStateToProps = state => ({
   articles: state.articles.items,

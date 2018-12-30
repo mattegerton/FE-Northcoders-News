@@ -2,9 +2,6 @@ import { FETCH_ARTICLES, NEW_ARTICLE } from "../actions/types";
 
 const initialState = {
   items: [],
-  item: {},
-  newArticle: false,
-  error: {},
   topic: ""
 };
 
