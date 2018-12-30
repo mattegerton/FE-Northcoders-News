@@ -1,4 +1,4 @@
-import { FETCH_ARTICLES, NEW_ARTICLE } from "./types";
+import { FETCH_ARTICLES } from "./types";
 import * as api from "../api";
 
 export const fetchArticles = params => dispatch => {

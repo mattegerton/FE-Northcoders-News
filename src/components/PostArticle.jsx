@@ -2,18 +2,32 @@ import React, { Component } from "react";
 import * as api from "../api";
 import { Link } from "react-router-dom";
 import "./css/PostArticle.css";
+import { connect } from "react-redux";
+import { postArticle } from "../actions/postActions";
+import PropTypes from "prop-types";
 
 class PostArticle extends Component {
   state = {
     title: "",
     body: "",
-    topic: "",
-    posted: false
+    topic: ""
   };
   render() {
-    return this.state.posted ? (
+    return this.props.posted ? (
       <div>
         <h3>Your article has been posted! </h3>
+
+        <div className="postedArticlePreview">
+          <label className="ArticlePrevLabel"> Title: </label>
+          <p> {this.props.post.title}</p>
+
+          <label className="ArticlePrevLabel"> Topic: </label>
+          <p> {this.props.post.belongs_to} </p>
+
+          <label className="ArticlePrevLabel"> Body: </label>
+          <p> {this.props.post.body} </p>
+        </div>
+
         <Link to="/articles">
           <button id="articlePostedButton">
             Take me back to the article page!
@@ -89,17 +103,30 @@ class PostArticle extends Component {
       body: this.state.body,
       created_by: this.props.user
     };
-    api
-      .postArticleToTopic(this.state.topic, article)
-      .then(response => {
-        this.setState({
-          posted: true
-        });
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    this.props.postArticle(this.state.topic, article);
+    // api
+    //   .postArticleToTopic(this.state.topic, article)
+    //   .then(response => {
+    //     this.setState({
+    //       posted: true
+    //     });
+    //   })
+    //   .catch(error => {
+    //     console.log(error);
+    //   });
   };
 }
 
-export default PostArticle;
+PostArticle.PropTypes = {
+  postArticle: PropTypes.func.isRequired
+};
+
+const mapStateToProps = state => ({
+  posted: state.postArticle.posted,
+  post: state.postArticle.post
+});
+
+export default connect(
+  mapStateToProps,
+  { postArticle }
+)(PostArticle);
