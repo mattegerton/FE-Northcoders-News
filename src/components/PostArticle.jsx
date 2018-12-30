@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import * as api from "../api";
 import { Link } from "react-router-dom";
 import "./css/PostArticle.css";
 import { connect } from "react-redux";

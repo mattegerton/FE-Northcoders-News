@@ -1,4 +1,4 @@
-import { FETCH_ARTICLES, NEW_ARTICLE } from "../actions/types";
+import { FETCH_ARTICLES } from "../actions/types";
 
 const initialState = {
   items: [],

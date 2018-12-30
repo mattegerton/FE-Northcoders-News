@@ -1,11 +1,10 @@
 import React, { Component } from "react";
-import "./css/Articles.css";
-import { Link, Route } from "react-router-dom";
-import * as api from "../api";
-import RenderArticles from "./RenderArticles";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchArticles } from "../actions/articleActions";
 import PropTypes from "prop-types";
+import RenderArticles from "./RenderArticles";
+import "./css/Articles.css";
 
 class Articles extends Component {
   // state = {
