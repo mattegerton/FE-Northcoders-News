@@ -2,7 +2,6 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
-import { createStore, applyMiddleware } from "redux";
 //styling
 import "./App.css";
 //components
@@ -17,8 +16,6 @@ import Error from "./components/WrongPath";
 import ExpandedArticle from "./components/ExpandedArticle";
 import ExpandedUser from "./components/ExpandedUser";
 import PostArticle from "./components/PostArticle";
-
-const store = createStore(() => [], {}, applyMiddleware());
 
 class App extends Component {
   state = {
