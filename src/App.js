@@ -1,6 +1,8 @@
 //packages
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
+import { Provider } from "react-redux";
+import { createStore, applyMiddleware } from "redux";
 //styling
 import "./App.css";
 //components
@@ -16,41 +18,45 @@ import ExpandedArticle from "./components/ExpandedArticle";
 import ExpandedUser from "./components/ExpandedUser";
 import PostArticle from "./components/PostArticle";
 
+const store = createStore(() => [], {}, applyMiddleware());
+
 class App extends Component {
   state = {
     user: "5b740b676ae2b0703855c140"
   };
   render() {
     return (
-      <div className="App">
-        <Header />
-        <Navigation user={this.state.user} />
-        <Switch>
-          <Route exact path="/" render={() => <MainContent />} />
-          <Route exact path="/topics" render={() => <Topics />} />
-          <Route
-            exact
-            path="/articles"
-            render={props => <Articles {...props} />}
-          />
-          <Route exact path="/users" render={() => <Users />} />
-          <Route exact path="/topics/:topic" component={Articles} />
-          <Route
-            exact
-            path="/articles/post"
-            render={() => <PostArticle user={this.state.user} />}
-          />
-          <Route
-            path="/articles/:articleID"
-            render={props => (
-              <ExpandedArticle {...props} user={this.state.user} />
-            )}
-          />
-          <Route path="/users/:userID" component={ExpandedUser} />
-          <Route component={Error} />
-        </Switch>
-        <Footer />
-      </div>
+      <Provider store={store}>
+        <div className="App">
+          <Header />
+          <Navigation user={this.state.user} />
+          <Switch>
+            <Route exact path="/" render={() => <MainContent />} />
+            <Route exact path="/topics" render={() => <Topics />} />
+            <Route
+              exact
+              path="/articles"
+              render={props => <Articles {...props} />}
+            />
+            <Route exact path="/users" render={() => <Users />} />
+            <Route exact path="/topics/:topic" component={Articles} />
+            <Route
+              exact
+              path="/articles/post"
+              render={() => <PostArticle user={this.state.user} />}
+            />
+            <Route
+              path="/articles/:articleID"
+              render={props => (
+                <ExpandedArticle {...props} user={this.state.user} />
+              )}
+            />
+            <Route path="/users/:userID" component={ExpandedUser} />
+            <Route component={Error} />
+          </Switch>
+          <Footer />
+        </div>
+      </Provider>
     );
   }
 }
