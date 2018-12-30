@@ -16,6 +16,7 @@ import Error from "./components/WrongPath";
 import ExpandedArticle from "./components/ExpandedArticle";
 import ExpandedUser from "./components/ExpandedUser";
 import PostArticle from "./components/PostArticle";
+import store from "./store";
 
 class App extends Component {
   state = {
