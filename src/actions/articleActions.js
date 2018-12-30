@@ -16,7 +16,10 @@ export const fetchArticles = params => dispatch => {
         });
         dispatch({
           type: FETCH_ARTICLES,
-          payload: articlesData
+          payload: {
+            articlesData,
+            params
+          }
         });
       })
       .catch(error => {
@@ -36,17 +39,14 @@ export const fetchArticles = params => dispatch => {
         });
         dispatch({
           type: FETCH_ARTICLES,
-          payload: articlesData
+          payload: {
+            articlesData,
+            params
+          }
         });
       })
       .catch(error => {
         console.log(error);
-        this.setState({
-          error: {
-            statusCode: error.response.status,
-            message: error.response.data.message
-          }
-        });
       });
   }
 };

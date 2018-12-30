@@ -13,7 +13,8 @@ export default function(state = initialState, action) {
     case FETCH_ARTICLES:
       return {
         ...state,
-        items: action.payload
+        items: action.payload.articlesData,
+        topic: action.payload.params
       };
     default:
       return state;

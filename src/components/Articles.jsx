@@ -34,14 +34,16 @@ class Articles extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchArticles(this.props.match.params.topic);
+    if (!this.props.articles.topic) {
+      this.props.fetchArticles(this.props.match.params.topic);
+    }
   }
 
-  // componentDidUpdate() {
-  //   if (this.state.topic !== this.props.match.params.topic) {
-  //     this.getArticles(this.props.match.params.topic);
-  //   }
-  // }
+  componentDidUpdate() {
+    if (this.props.topic !== this.props.match.params.topic) {
+      this.props.fetchArticles(this.props.match.params.topic);
+    }
+  }
 
   // getArticles = params => {
   //   if (params !== undefined) {
@@ -95,7 +97,8 @@ class Articles extends Component {
 }
 
 const mapStateToProps = state => ({
-  articles: state.articles.items
+  articles: state.articles.items,
+  topic: state.articles.topic
 });
 
 export default connect(
