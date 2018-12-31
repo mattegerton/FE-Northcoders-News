@@ -1,18 +1,19 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { fetchUsers } from "../actions/userActions";
 import "./css/User.css";
-import * as api from "../api";
 
 class Users extends Component {
-  state = {
-    users: []
-  };
+  // state = {
+  //   users: []
+  // };
   render() {
     return (
       <div>
         <h3> Here's all of our users! </h3>
         <div className="usersWrapper">
-          {this.state.users.map(user => {
+          {this.props.users.map(user => {
             return (
               <div className="userWrapper" key={user.username}>
                 <NavLink to={`/users/${user._id}`} className="userLink">
@@ -36,21 +37,28 @@ class Users extends Component {
     );
   }
   componentDidMount() {
-    this.getAllUsers();
+    this.props.fetchUsers();
   }
 
-  getAllUsers = () => {
-    api
-      .getAllUsers()
-      .then(response => {
-        this.setState({
-          users: response.data.users
-        });
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  };
+  // getAllUsers = () => {
+  //   api
+  //     .getAllUsers()
+  //     .then(response => {
+  //       this.setState({
+  //         users: response.data.users
+  //       });
+  //     })
+  //     .catch(error => {
+  //       console.log(error);
+  //     });
+  // };
 }
 
-export default Users;
+const mapStateToProps = state => ({
+  users: state.users.items
+});
+
+export default connect(
+  mapStateToProps,
+  { fetchUsers }
+)(Users);
