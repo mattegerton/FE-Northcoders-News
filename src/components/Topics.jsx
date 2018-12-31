@@ -1,18 +1,20 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { fetchTopics } from "../actions/topicActions";
+import PropTypes from "prop-types";
 import "./css/Topics.css";
-import * as api from "../api";
 
 class Topics extends Component {
-  state = {
-    topics: []
-  };
+  // state = {
+  //   topics: []
+  // };
   render() {
     return (
       <div>
         <h3> Select a topic </h3>
         <div id="topicGrid">
-          {this.state.topics.map(topic => {
+          {this.props.topics.map(topic => {
             return (
               <Link
                 to={`/topics/${topic.slug}`}
@@ -41,22 +43,32 @@ class Topics extends Component {
   }
 
   componentDidMount() {
-    this.getAllTopics();
+    this.props.fetchTopics();
   }
 
-  getAllTopics() {
-    api
-      .getAllTopics()
-      .then(response => {
-        this.setState({
-          topics: response.topics
-        });
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }
+  // getAllTopics() {
+  //   api
+  //     .getAllTopics()
+  //     .then(response => {
+  //       this.setState({
+  //         topics: response.topics
+  //       });
+  //     })
+  //     .catch(error => {
+  //       console.log(error);
+  //     });
+  // }
 }
-Topics.propTypes = {};
 
-export default Topics;
+Topics.propTypes = {
+  fetchTopics: PropTypes.func.isRequired
+};
+
+const mapStateToProps = state => ({
+  topics: state.topics.items
+});
+
+export default connect(
+  mapStateToProps,
+  { fetchTopics }
+)(Topics);

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { fetchUsers } from "../actions/userActions";
+import PropTypes from "prop-types";
 import "./css/User.css";
 
 class Users extends Component {
@@ -53,6 +54,10 @@ class Users extends Component {
   //     });
   // };
 }
+
+Users.propTypes = {
+  fetchUsers: PropTypes.func.isRequired
+};
 
 const mapStateToProps = state => ({
   users: state.users.items
