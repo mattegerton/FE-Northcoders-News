@@ -1,30 +1,60 @@
-import { EXTENDED_ARTICLE } from "./types";
+import { EXTENDED_ARTICLE, ARTICLE_VOTES } from "./types";
 import * as api from "../api";
 
 export const renderExtendedArticle = (article, articleID) => dispatch => {
-  console.log("!!!!!!");
   if (article.length < 1) {
-    console.log("???????");
+    let articleData = {};
     api.getArticleByArticleId(articleID).then(response => {
-      const articleData = {
+      articleData = {
         ...response.data.article,
         created_by: response.data.article.created_by.username
       };
-      article = articleData;
     });
+    console.log(article);
+    api
+      .getCommentsByArticleId(articleID)
+      .then(response =>
+        dispatch({
+          type: EXTENDED_ARTICLE,
+          payload: {
+            article: articleData,
+            comments: response.data.comments
+          }
+        })
+      )
+      .catch(error => {
+        console.log(error);
+      });
+  } else {
+    api
+      .getCommentsByArticleId(articleID)
+      .then(response =>
+        dispatch({
+          type: EXTENDED_ARTICLE,
+          payload: {
+            article: article[0],
+            comments: response.data.comments
+          }
+        })
+      )
+      .catch(error => {
+        console.log(error);
+      });
   }
-  api
-    .getCommentsByArticleId(articleID)
-    .then(response =>
-      dispatch({
-        type: EXTENDED_ARTICLE,
-        payload: {
-          article,
-          comments: response.data.comments
-        }
-      })
-    )
-    .catch(error => {
-      console.log(error);
+};
+
+export const articleVote = (params, selection, article) => dispatch => {
+  console.log(article);
+  api.voteByArticleId(params, selection).then(response => {
+    let vote = article.votes;
+    selection === "up" ? vote++ : vote--;
+    dispatch({
+      type: ARTICLE_VOTES,
+      payload: {
+        ...article,
+        voted: selection === "up" ? "up" : "down",
+        votes: vote
+      }
     });
+  });
 };

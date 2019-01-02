@@ -3,9 +3,13 @@ import { connect } from "react-redux";
 import { fetchArticles } from "../actions/articleActions";
 import "./css/ExpandedArticle.css";
 import * as api from "../api";
-import { renderExtendedArticle } from "../actions/extendedArticleActions";
+import {
+  renderExtendedArticle,
+  articleVote
+} from "../actions/extendedArticleActions";
 import PostComment from "./PostComment";
 import Error from "./WrongPath";
+import { ARTICLE_VOTES } from "../actions/types";
 const isEmpty = require("lodash.isempty");
 
 class ExpandedArticle extends Component {
@@ -19,7 +23,9 @@ class ExpandedArticle extends Component {
   };
 
   render() {
-    return isEmpty(this.state.error) ? (
+    console.log(this.props.extArticle);
+    // return isEmpty(this.state.error) ? (
+    return (
       <div>
         <table className="articleTable">
           <tbody>
@@ -46,19 +52,29 @@ class ExpandedArticle extends Component {
                 <button
                   disabled={this.state.voted === "down" ? true : false}
                   onClick={() =>
-                    this.articleVote(this.state.article._id, "down")
+                    this.props.articleVote(
+                      this.props.extArticle._id,
+                      "down",
+                      this.props.extArticle
+                    )
                   }
                 >
                   <ion-icon name="thumbs-down" />
                 </button>
                 <button
                   disabled={this.state.voted === "up" ? true : false}
-                  onClick={() => this.articleVote(this.state.article._id, "up")}
+                  onClick={() =>
+                    this.props.articleVote(
+                      this.props.extArticle._id,
+                      "up",
+                      this.props.extArticle
+                    )
+                  }
                 >
                   <ion-icon name="thumbs-up" />
                 </button>
               </th>
-              <tr id="voteCount">{`${this.state.article.votes} likes`}</tr>
+              <tr id="voteCount">{`${this.props.extArticle.votes} likes`}</tr>
             </tr>
           </tbody>
         </table>
@@ -138,9 +154,10 @@ class ExpandedArticle extends Component {
           </div>
         )}
       </div>
-    ) : (
-      <Error />
     );
+    // ) : (
+    //   <Error />
+    // );
   }
 
   componentDidMount() {
@@ -194,16 +211,28 @@ class ExpandedArticle extends Component {
   //     });
   // };
 
-  // articleVote = (params, selection) => {
+  // articleVote = (params, selection) => dispatch => {
+  //   console.log("clik");
   //   api.voteByArticleId(params, selection).then(response => {
-  //     let vote = this.state.article.votes;
+  //     let article = this.props.extArticle;
+  //     let vote = this.props.extArticle.votes;
   //     selection === "up" ? vote++ : vote--;
-  //     this.setState({
-  //       ...this.state,
-  //       voted: selection === "up" ? "up" : "down",
-  //       article: {
-  //         ...this.state.article,
-  //         votes: vote
+  //     // this.setState({
+  //     //   ...this.state,
+  //     //   voted: selection === "up" ? "up" : "down",
+  //     //   article: {
+  //     //     ...this.state.article,
+  //     //     votes: vote
+  //     //   }
+  //     // });
+  //     dispatch({
+  //       type: ARTICLE_VOTES,
+  //       payload: {
+  //         article: {
+  //           ...article,
+  //           voted: selection === "up" ? "up" : "down",
+  //           votes: vote
+  //         }
   //       }
   //     });
   //   });
@@ -255,10 +284,12 @@ const mapStateToProps = state => ({
   articles: state.articles.items,
   topic: state.articles.topic,
   extArticle: state.extArticle.article,
-  extComments: state.extArticle.comments
+  extComments: state.extArticle.comments,
+  commentPosted: state.extArticle.commentPosted,
+  voted: state.extArticle.voted
 });
 
 export default connect(
   mapStateToProps,
-  { renderExtendedArticle, fetchArticles }
+  { renderExtendedArticle, fetchArticles, articleVote }
 )(ExpandedArticle);
