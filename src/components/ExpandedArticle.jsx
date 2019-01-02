@@ -1,6 +1,9 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { fetchArticles } from "../actions/articleActions";
 import "./css/ExpandedArticle.css";
 import * as api from "../api";
+import { renderExtendedArticle } from "../actions/extendedArticleActions";
 import PostComment from "./PostComment";
 import Error from "./WrongPath";
 const isEmpty = require("lodash.isempty");
@@ -14,13 +17,14 @@ class ExpandedArticle extends Component {
     commentVoted: "",
     error: {}
   };
+
   render() {
     return isEmpty(this.state.error) ? (
       <div>
         <table className="articleTable">
           <tbody>
             <tr>
-              <td id="articleTitle">{this.state.article.title}</td>
+              <td id="articleTitle">{this.props.extArticle.title}</td>
             </tr>
             <tr id="tableImage">
               <img
@@ -30,11 +34,11 @@ class ExpandedArticle extends Component {
               />
             </tr>
             <tr>
-              <td id="articleBody">{this.state.article.body}</td>
+              <td id="articleBody">{this.props.extArticle.body}</td>
             </tr>
             <tr>
               <td id="articleCreator">
-                Article posted by {this.state.article.created_by}
+                Article posted by {this.props.extArticle.created_by}
               </td>
             </tr>
             <tr>
@@ -141,99 +145,103 @@ class ExpandedArticle extends Component {
 
   componentDidMount() {
     const articleID = this.props.match.params.articleID;
-    this.getComments(articleID);
-    this.getArticle(articleID);
+    const currentArticle = this.props.articles.filter(article => {
+      return article._id === articleID;
+    });
+    // this.getComments(articleID);
+    // this.getArticle(articleID);
+    this.props.renderExtendedArticle(currentArticle, articleID);
   }
 
-  componentDidUpdate() {
-    const articleID = this.props.match.params.articleID;
-    this.getComments(articleID);
-  }
+  // componentDidUpdate() {
+  //   const articleID = this.props.match.params.articleID;
+  //   this.getComments(articleID);
+  // }
 
-  getComments = params => {
-    api
-      .getCommentsByArticleId(params)
-      .then(response => {
-        this.setState({
-          comments: response.data.comments
-        });
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  };
+  // getComments = params => {
+  //   api
+  //     .getCommentsByArticleId(params)
+  //     .then(response => {
+  //       this.setState({
+  //         comments: response.data.comments
+  //       });
+  //     })
+  //     .catch(error => {
+  //       console.log(error);
+  //     });
+  // };
 
-  getArticle = params => {
-    api
-      .getArticleByArticleId(params)
-      .then(response => {
-        const articleData = {
-          ...response.data.article,
-          created_by: response.data.article.created_by.username
-        };
-        this.setState({
-          article: articleData
-        });
-      })
-      .catch(error => {
-        console.log(error);
-        this.setState({
-          error: {
-            statusCode: error.response.status,
-            message: error.response.data.message
-          }
-        });
-      });
-  };
+  // getArticle = params => {
+  // api
+  //   .getArticleByArticleId(params)
+  //   .then(response => {
+  //     const articleData = {
+  //       ...response.data.article,
+  //       created_by: response.data.article.created_by.username
+  //     };
+  //     this.setState({
+  //       article: articleData
+  //     });
+  //   })
+  //     .catch(error => {
+  //       console.log(error);
+  //       this.setState({
+  //         error: {
+  //           statusCode: error.response.status,
+  //           message: error.response.data.message
+  //         }
+  //       });
+  //     });
+  // };
 
-  articleVote = (params, selection) => {
-    api.voteByArticleId(params, selection).then(response => {
-      let vote = this.state.article.votes;
-      selection === "up" ? vote++ : vote--;
-      this.setState({
-        ...this.state,
-        voted: selection === "up" ? "up" : "down",
-        article: {
-          ...this.state.article,
-          votes: vote
-        }
-      });
-    });
-  };
+  // articleVote = (params, selection) => {
+  //   api.voteByArticleId(params, selection).then(response => {
+  //     let vote = this.state.article.votes;
+  //     selection === "up" ? vote++ : vote--;
+  //     this.setState({
+  //       ...this.state,
+  //       voted: selection === "up" ? "up" : "down",
+  //       article: {
+  //         ...this.state.article,
+  //         votes: vote
+  //       }
+  //     });
+  //   });
+  // };
 
-  setCommentCount = comment => {
-    this.setState({
-      ...this.state,
-      commentCount: comment.vote
-    });
-  };
+  // setCommentCount = comment => {
+  //   this.setState({
+  //     ...this.state,
+  //     commentCount: comment.vote
+  //   });
+  // };
 
-  commentVote = (params, selection, comment) => {
-    const index = this.state.comments.indexOf(comment);
-    api.voteByCommentId(params, selection).then(response => {
-      let vote = comment.votes;
-      selection === "up" ? vote++ : vote--;
-      let updateComments = this.state.comments;
-      updateComments[index].votes = response.data.comment.votes;
-      this.setState({
-        ...this.state,
-        comments: updateComments,
-        commentVoted: selection === "up" ? "up" : "down"
-      });
-    });
-  };
+  // commentVote = (params, selection, comment) => {
+  //   const index = this.state.comments.indexOf(comment);
+  //   api.voteByCommentId(params, selection).then(response => {
+  //     let vote = comment.votes;
+  //     selection === "up" ? vote++ : vote--;
+  //     let updateComments = this.state.comments;
+  //     updateComments[index].votes = response.data.comment.votes;
+  //     this.setState({
+  //       ...this.state,
+  //       comments: updateComments,
+  //       commentVoted: selection === "up" ? "up" : "down"
+  //     });
+  //   });
+  // };
 
-  deleteComment = params => {
-    api.deleteComment(params).then(response => {
-      console.log(response);
-      let updateComments = this.state.comments;
-      console.log(updateComments);
-      this.setState({
-        ...this.state,
-        comments: updateComments
-      });
-    });
-  };
+  // deleteComment = params => {
+  //   api.deleteComment(params).then(response => {
+  //     console.log(response);
+  //     let updateComments = this.state.comments;
+  //     console.log(updateComments);
+  //     this.setState({
+  //       ...this.state,
+  //       comments: updateComments
+  //     });
+  //   });
+  // };
 
   // Would be used for implementing a successfully posted message.
   // commentPosted = () => {
@@ -243,4 +251,14 @@ class ExpandedArticle extends Component {
   // };
 }
 
-export default ExpandedArticle;
+const mapStateToProps = state => ({
+  articles: state.articles.items,
+  topic: state.articles.topic,
+  extArticle: state.extArticle.article,
+  extComments: state.extArticle.comments
+});
+
+export default connect(
+  mapStateToProps,
+  { renderExtendedArticle, fetchArticles }
+)(ExpandedArticle);
