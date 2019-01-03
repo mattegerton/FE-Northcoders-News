@@ -17,13 +17,13 @@ class PostArticle extends Component {
         <h3>Your article has been posted! </h3>
 
         <div className="postedArticlePreview">
-          <label className="ArticlePrevLabel"> Title: </label>
+          <label className="articlePrevLabel"> Title: </label>
           <p> {this.props.post.title}</p>
 
-          <label className="ArticlePrevLabel"> Topic: </label>
+          <label className="articlePrevLabel"> Topic: </label>
           <p> {this.props.post.belongs_to} </p>
 
-          <label className="ArticlePrevLabel"> Body: </label>
+          <label className="articlePrevLabel"> Body: </label>
           <p> {this.props.post.body} </p>
         </div>
 

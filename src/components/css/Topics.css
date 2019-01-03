@@ -9,10 +9,17 @@
   text-decoration: none;
 }
 
+.topicLink :hover {
+  border: 1px #ac3636 solid;
+  box-shadow: 2px 2px #888888;
+}
+
 .topicButton {
   background: #9f9f9f;
   font-size: 120%;
   font-weight: 100;
   margin: 5%;
   padding: 2%;
+  border: 1px solid;
+  box-shadow: 2px 2px #888888;
 }

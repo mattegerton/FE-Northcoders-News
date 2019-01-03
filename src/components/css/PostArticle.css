@@ -35,8 +35,23 @@
   background: white;
   color: #2b3031;
   padding: 2%;
-  font-size: 120%;
+  font-size: 100%;
   margin: 5%;
   border-radius: 50px;
   cursor: pointer;
+}
+
+.postedArticlePreview p {
+  font-size: 80%;
+}
+
+.postedArticlePreview {
+  margin: 2rem;
+  padding: 1rem;
+  background: #fff;
+}
+
+.articlePrevLabel {
+  font-size: 60%;
+  color: #2b3031;
 }

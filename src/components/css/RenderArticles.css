@@ -1,4 +1,5 @@
 .articleWrapper {
+  overflow: hidden;
   display: flex;
   background: white;
   margin: 1%;
@@ -38,10 +39,14 @@
 
 #articlesText {
   width: 300px;
+  overflow: hidden;
 }
 
 #prevText {
   color: #262c2d;
+  word-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .articleFooterText {
