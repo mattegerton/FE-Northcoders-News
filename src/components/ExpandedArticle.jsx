@@ -14,14 +14,14 @@ import Comments from "./Comments";
 const isEmpty = require("lodash.isempty");
 
 class ExpandedArticle extends Component {
-  state = {
-    article: {},
-    comments: [],
-    commentPosted: false,
-    voted: "",
-    commentVoted: "",
-    error: {}
-  };
+  // state = {
+  //   article: {},
+  //   comments: [],
+  //   commentPosted: false,
+  //   voted: "",
+  //   commentVoted: "",
+  //   error: {}
+  // };
 
   render() {
     console.log(this.props.extArticle);

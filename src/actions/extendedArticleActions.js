@@ -10,7 +10,6 @@ export const renderExtendedArticle = (article, articleID) => dispatch => {
         created_by: response.data.article.created_by.username
       };
     });
-    console.log(article);
     api
       .getCommentsByArticleId(articleID)
       .then(response =>
@@ -44,7 +43,6 @@ export const renderExtendedArticle = (article, articleID) => dispatch => {
 };
 
 export const articleVote = (params, selection, article) => dispatch => {
-  console.log(article);
   api.voteByArticleId(params, selection).then(response => {
     let vote = article.votes;
     selection === "up" ? vote++ : vote--;

@@ -25,34 +25,41 @@ class Comments extends Component {
                       <tr>
                         <th>
                           <button
-                            disabled={
-                              this.props.commentVoted === "down" &&
-                              this.props.comment._id === comment._id
-                                ? true
-                                : false
-                            }
+                            id={`buttondown${comment._id}`}
+                            // Attempt to make Redux store look up.
+                            // disabled={
+                            //   this.props.commentVoted[comment._id] === "down" &&
+                            //   this.props.comment._id === comment._id
+                            //     ? true
+                            //     : false
+                            // }
+                            disabled={false}
                             onClick={() =>
                               this.props.voteOnComment(
                                 comment._id,
                                 "down",
-                                comment
+                                comment,
+                                this.props.commentVoted
                               )
                             }
                           >
                             <ion-icon name="thumbs-down" />
                           </button>
                           <button
-                            disabled={
-                              this.props.commentVoted === "up" &&
-                              this.props.comment._id === comment._id
-                                ? true
-                                : false
-                            }
+                            id={`buttonup${comment._id}`}
+                            // Attempt to make Redux store look up.
+                            // disabled={
+                            //   this.props.commentVoted[comment._id] === "up"
+                            //     ? true
+                            //     : false
+                            // }
+                            disabled={false}
                             onClick={() =>
                               this.props.voteOnComment(
                                 comment._id,
                                 "up",
-                                comment
+                                comment,
+                                this.props.commentVoted
                               )
                             }
                           >

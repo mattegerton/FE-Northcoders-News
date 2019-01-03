@@ -2,11 +2,10 @@ import { COMMENT_VOTE } from "../actions/types";
 
 const initialState = {
   comment: {},
-  voted: ""
+  voted: {}
 };
 
 export default function(state = initialState, action) {
-  console.log(action);
   switch (action.type) {
     case COMMENT_VOTE:
       return {
