@@ -1,18 +1,24 @@
-import { COMMENT_VOTES } from "./types";
+import { COMMENT_VOTE } from "./types";
+import * as api from "../api";
 
-export const postArticle = (topic, postData) => dispatch => {
-  api
-    .postArticleToTopic(topic, postData)
-    .then(post =>
-      dispatch({
-        type: POST_ARTICLE,
-        payload: {
-          post: post.data.article,
-          posted: true
-        }
-      })
-    )
-    .catch(error => {
-      console.log(error);
+export const voteOnComment = (params, selection, comment) => dispatch => {
+  api.voteByCommentId(params, selection).then(response => {
+    let vote = comment.votes;
+    // selection === "up" ? vote++ : vote--;
+    if (selection === "up") {
+      comment.votes++;
+      vote++;
+    } else {
+      comment.votes--;
+      vote--;
+    }
+    dispatch({
+      type: COMMENT_VOTE,
+      payload: {
+        ...comment,
+        voted: selection === "up" ? "up" : "down",
+        votes: vote
+      }
     });
+  });
 };

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { voteOnComment } from "../actions/commentActions";
 
 class Comments extends Component {
   render() {
@@ -9,7 +10,7 @@ class Comments extends Component {
           <div>
             {this.props.extComments.map(comment => {
               return (
-                <div>
+                <div key={comment._id}>
                   <table className="commentTable">
                     <tbody>
                       <tr>
@@ -23,26 +24,40 @@ class Comments extends Component {
                       </tr>
                       <tr>
                         <th>
-                          {/* <button
+                          <button
                             disabled={
-                              this.state.commentVoted === "down" ? true : false
+                              this.props.commentVoted === "down" &&
+                              this.props.comment._id === comment._id
+                                ? true
+                                : false
                             }
                             onClick={() =>
-                              this.commentVote(comment._id, "down", comment)
+                              this.props.voteOnComment(
+                                comment._id,
+                                "down",
+                                comment
+                              )
                             }
                           >
                             <ion-icon name="thumbs-down" />
                           </button>
                           <button
                             disabled={
-                              this.state.commentVoted === "up" ? true : false
+                              this.props.commentVoted === "up" &&
+                              this.props.comment._id === comment._id
+                                ? true
+                                : false
                             }
                             onClick={() =>
-                              this.commentVote(comment._id, "up", comment)
+                              this.props.voteOnComment(
+                                comment._id,
+                                "up",
+                                comment
+                              )
                             }
                           >
                             <ion-icon name="thumbs-up" />
-                          </button> */}
+                          </button>
                         </th>
                         <th />
                         <th>
@@ -84,10 +99,12 @@ class Comments extends Component {
 }
 
 const mapStateToProps = state => ({
-  extComments: state.extArticle.comments
+  extComments: state.extArticle.comments,
+  commentVoted: state.comments.voted,
+  comment: state.comments.comment
 });
 
 export default connect(
   mapStateToProps,
-  {}
+  { voteOnComment }
 )(Comments);

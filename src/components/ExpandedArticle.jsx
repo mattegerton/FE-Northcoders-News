@@ -178,17 +178,17 @@ class ExpandedArticle extends Component {
 
   // commentVote = (params, selection, comment) => {
   //   const index = this.state.comments.indexOf(comment);
-  //   api.voteByCommentId(params, selection).then(response => {
-  //     let vote = comment.votes;
-  //     selection === "up" ? vote++ : vote--;
-  //     let updateComments = this.state.comments;
-  //     updateComments[index].votes = response.data.comment.votes;
-  //     this.setState({
-  //       ...this.state,
-  //       comments: updateComments,
-  //       commentVoted: selection === "up" ? "up" : "down"
-  //     });
+  // api.voteByCommentId(params, selection).then(response => {
+  //   let vote = comment.votes;
+  //   selection === "up" ? vote++ : vote--;
+  //   let updateComments = this.state.comments;
+  //   updateComments[index].votes = response.data.comment.votes;
+  //   this.setState({
+  //     ...this.state,
+  //     comments: updateComments,
+  //     commentVoted: selection === "up" ? "up" : "down"
   //   });
+  // });
   // };
 
   // deleteComment = params => {

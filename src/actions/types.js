@@ -4,4 +4,4 @@ export const FETCH_USERS = "FETCH_USERS";
 export const FETCH_TOPICS = "FETCH_TOPICS";
 export const EXTENDED_ARTICLE = "EXTENDED_ARTICLE";
 export const ARTICLE_VOTES = "ARTICLE_VOTES";
-export const COMMENT_VOTES = "COMMENT_VOTES";
+export const COMMENT_VOTE = "COMMENT_VOTE";
