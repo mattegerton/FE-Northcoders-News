@@ -31,9 +31,10 @@
 
 #articlePostBtn {
   border: none;
-  padding: 2%;
+  padding: 1rem;
   font-size: 90%;
   border-radius: 50px;
+  margin-bottom: 50px;
 }
 
 .articleButton {

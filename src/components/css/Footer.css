@@ -1,12 +1,12 @@
 .footer {
   background: #262c2d;
-  height: 50px;
   clear: both;
   font-weight: 100;
   font-size: 50%;
   color: white;
   position: relative;
   text-align: center;
+  padding: 1rem;
 }
 
 .footerSocial {

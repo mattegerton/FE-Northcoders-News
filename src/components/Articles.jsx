@@ -5,6 +5,8 @@ import { fetchArticles } from "../actions/articleActions";
 import PropTypes from "prop-types";
 import RenderArticles from "./RenderArticles";
 import "./css/Articles.css";
+import Loader from "./Loader";
+const isEmpty = require("lodash.isempty");
 
 class Articles extends Component {
   // state = {
@@ -27,7 +29,13 @@ class Articles extends Component {
             Post an article!
           </Link>
         </button>
-        <RenderArticles articles={this.props.articles} />
+        {isEmpty(this.props.articles) ? (
+          <div>
+            <Loader />
+          </div>
+        ) : (
+          <RenderArticles articles={this.props.articles} />
+        )}
       </div>
     );
     // );
