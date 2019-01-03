@@ -51,7 +51,9 @@ class ExpandedArticle extends Component {
             <tr>
               <th>
                 <button
-                  disabled={this.state.voted === "down" ? true : false}
+                  disabled={
+                    this.props.extArticle.voted === "down" ? true : false
+                  }
                   onClick={() =>
                     this.props.articleVote(
                       this.props.extArticle._id,
@@ -63,7 +65,7 @@ class ExpandedArticle extends Component {
                   <ion-icon name="thumbs-down" />
                 </button>
                 <button
-                  disabled={this.state.voted === "up" ? true : false}
+                  disabled={this.props.extArticle.voted === "up" ? true : false}
                   onClick={() =>
                     this.props.articleVote(
                       this.props.extArticle._id,
