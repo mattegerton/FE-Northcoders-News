@@ -31,13 +31,18 @@
 
 #articleBody {
   padding-top: 2%;
-  font-size: 70%;
+  font-size: 90%;
+  line-height: 1.5em;
 }
 
 #articleBody,
 #commentBody {
   color: #262c2d;
   text-align: justify;
+}
+
+.voteCommentBtn {
+  display: inline-block;
 }
 
 .commentTable {
