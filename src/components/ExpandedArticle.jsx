@@ -2,16 +2,16 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchArticles } from "../actions/articleActions";
 import "./css/ExpandedArticle.css";
-import * as api from "../api";
+
 import {
   renderExtendedArticle,
   articleVote
 } from "../actions/extendedArticleActions";
-import PostComment from "./PostComment";
-import Error from "./WrongPath";
-import { ARTICLE_VOTES } from "../actions/types";
+// import PostComment from "./PostComment";
+// import Error from "./WrongPath";
+// import { ARTICLE_VOTES } from "../actions/types";
 import Comments from "./Comments";
-const isEmpty = require("lodash.isempty");
+// const isEmpty = require("lodash.isempty");
 
 class ExpandedArticle extends Component {
   // state = {
@@ -24,7 +24,6 @@ class ExpandedArticle extends Component {
   // };
 
   render() {
-    console.log(this.props.extArticle);
     // return isEmpty(this.state.error) ? (
     return (
       <div>
