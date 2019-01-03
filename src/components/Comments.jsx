@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PostComment from "./PostComment";
 import { connect } from "react-redux";
 import { voteOnComment } from "../actions/commentActions";
 
@@ -80,11 +81,11 @@ class Comments extends Component {
                 </div>
               );
             })}
-            {/* <PostComment
-              user={this.props.user}
-              articleID={this.props.match.params.articleID}
-              commentPosted={this.commentPosted}
-            /> */}
+            <PostComment
+              // user={this.props.user}
+              articleID={this.props.articleID}
+              // commentPosted={this.commentPosted}
+            />
           </div>
         ) : (
           <div>
@@ -93,11 +94,11 @@ class Comments extends Component {
               <br />
               Be the first to comment on this article!
             </p>
-            {/* <PostComment
-              user={this.props.user}
-              articleID={this.props.match.params.articleID}
-              commentPosted={this.commentPosted}
-            /> */}
+            <PostComment
+              // user={this.props.user}
+              articleID={this.props.articleID}
+              // commentPosted={this.commentPosted}
+            />
           </div>
         )}
       </div>

@@ -5,11 +5,21 @@
   font-weight: 400;
   background: #ececec;
   font-size: 22px;
+  min-height: 100%;
 }
 
 * {
   margin: 0;
   box-sizing: border-box;
+}
+
+body {
+  background: #bebdbd;
+  min-width: 320px;
+  max-width: 1200px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* ICONS */

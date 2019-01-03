@@ -83,7 +83,7 @@ class ExpandedArticle extends Component {
         </table>
         Comments
         <br />
-        <Comments />
+        <Comments articleID={this.props.extArticle._id} />
       </div>
     );
     // ) : (
