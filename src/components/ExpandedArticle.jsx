@@ -82,7 +82,12 @@ class ExpandedArticle extends Component {
         </table>
         Comments
         <br />
-        <Comments articleID={this.props.extArticle._id} />
+        <Comments
+          articleID={this.props.extArticle._id}
+          article={this.props.articles.filter(article => {
+            return article._id === this.props.match.params.articleID;
+          })}
+        />
       </div>
     );
     // ) : (

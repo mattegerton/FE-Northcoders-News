@@ -60,6 +60,7 @@ class Comments extends Component {
             <PostComment
               // user={this.props.user}
               articleID={this.props.articleID}
+              article={this.props.article}
               // commentPosted={this.commentPosted}
             />
           </div>

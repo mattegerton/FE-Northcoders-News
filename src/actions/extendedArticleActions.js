@@ -2,6 +2,7 @@ import { EXTENDED_ARTICLE, ARTICLE_VOTES } from "./types";
 import * as api from "../api";
 
 export const renderExtendedArticle = (article, articleID) => dispatch => {
+  console.log(article, "<<action<<");
   if (article.length < 1) {
     let articleData = {};
     api.getArticleByArticleId(articleID).then(response => {
@@ -25,6 +26,7 @@ export const renderExtendedArticle = (article, articleID) => dispatch => {
         console.log(error);
       });
   } else {
+    console.log(article[0], "<<action comments<<");
     api
       .getCommentsByArticleId(articleID)
       .then(response =>

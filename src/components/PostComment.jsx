@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./css/PostComment.css";
 import * as api from "../api";
+import { connect } from "react-redux";
+import { renderExtendedArticle } from "../actions/extendedArticleActions";
 
 class PostComment extends Component {
   state = {
@@ -8,10 +10,12 @@ class PostComment extends Component {
     commentPosted: false
   };
   render() {
+    console.log(this.props.article, "<<<<");
     return (
       <div id="comment_form">
         <div>
           <textarea
+            className="commentTextArea"
             onChange={this.handleChange}
             value={this.state.body}
             rows="10"
@@ -23,6 +27,7 @@ class PostComment extends Component {
         </div>
         <div>
           <input
+            id="commentInput"
             type="submit"
             name="submit"
             value="Add Comment"
@@ -43,15 +48,30 @@ class PostComment extends Component {
     event.preventDefault();
     const comment = {
       body: this.state.body,
-      created_by: this.props.user
+      created_by: "5b740b676ae2b0703855c140"
     };
-    api.postCommentToArticle(this.props.articleID, comment).then(response => {
-      this.setState({
-        body: "",
-        commentPosted: true
-      });
+    api.postCommentToArticle(this.props.articleID, comment).then(res => {
+      document.getElementById("commentInput").disabled = true;
+      this.props.renderExtendedArticle(
+        this.props.article,
+        this.props.articleID
+      );
     });
+    // .then(response => {
+    //   this.setState({
+    //     body: "",
+    //     commentPosted: true
+    //   });
+    // })
   };
 }
 
-export default PostComment;
+const mapStateToProps = state => ({
+  extArticle: state.extArticle.article,
+  extComments: state.extArticle.comments
+});
+
+export default connect(
+  mapStateToProps,
+  { renderExtendedArticle }
+)(PostComment);
