@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import PostComment from "./PostComment";
 import { connect } from "react-redux";
 import { voteOnComment } from "../actions/commentActions";
+import { renderExtendedArticle } from "../actions/extendedArticleActions";
 import "./css/Comments.css";
+import * as api from "../api";
 
 class Comments extends Component {
   render() {
@@ -19,26 +21,19 @@ class Comments extends Component {
                       Posted by: {comment.belongs_to}{" "}
                     </div>
                     <div id="commentBody"> {comment.body} </div>
+                    <button
+                      onClick={() => {
+                        this.deleteComment(comment._id);
+                      }}
+                    >
+                      Delete
+                    </button>
                   </div>
                   <div id="commentBtnGroup">
                     <div id="commentVoteGroup">
                       <p> Votes </p>
                       <div> {comment.votes} </div>
                     </div>
-                    <button
-                      id={`buttondown${comment._id}`}
-                      disabled={false}
-                      onClick={() =>
-                        this.props.voteOnComment(
-                          comment._id,
-                          "down",
-                          comment,
-                          this.props.commentVoted
-                        )
-                      }
-                    >
-                      <ion-icon name="thumbs-down" />
-                    </button>
                     <button
                       id={`buttonup${comment._id}`}
                       disabled={false}
@@ -52,6 +47,20 @@ class Comments extends Component {
                       }
                     >
                       <ion-icon name="thumbs-up" />
+                    </button>
+                    <button
+                      id={`buttondown${comment._id}`}
+                      disabled={false}
+                      onClick={() =>
+                        this.props.voteOnComment(
+                          comment._id,
+                          "down",
+                          comment,
+                          this.props.commentVoted
+                        )
+                      }
+                    >
+                      <ion-icon name="thumbs-down" />
                     </button>
                   </div>
                 </div>
@@ -160,6 +169,15 @@ class Comments extends Component {
       </div>
     );
   }
+
+  deleteComment = params => {
+    api.deleteComment(params).then(response => {
+      this.props.renderExtendedArticle(
+        this.props.article,
+        this.props.articleID
+      );
+    });
+  };
 }
 
 const mapStateToProps = state => ({
@@ -170,5 +188,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { voteOnComment }
+  { voteOnComment, renderExtendedArticle }
 )(Comments);
