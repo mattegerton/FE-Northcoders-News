@@ -7,7 +7,6 @@ class ExpandedUser extends Component {
     user: {}
   };
   render() {
-    console.log(this.state.user);
     return (
       <div>
         <table id="expandedUserCard">

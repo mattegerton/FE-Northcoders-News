@@ -27,7 +27,6 @@ class Articles extends Component {
         )}
       </div>
     );
-    // );
   }
 
   componentDidMount() {
