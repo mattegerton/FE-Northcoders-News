@@ -103,16 +103,6 @@ class PostArticle extends Component {
       created_by: this.props.user
     };
     this.props.postArticle(this.state.topic, article);
-    // api
-    //   .postArticleToTopic(this.state.topic, article)
-    //   .then(response => {
-    //     this.setState({
-    //       posted: true
-    //     });
-    //   })
-    //   .catch(error => {
-    //     console.log(error);
-    //   });
   };
 }
 

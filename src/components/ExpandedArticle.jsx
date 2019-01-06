@@ -2,29 +2,14 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchArticles } from "../actions/articleActions";
 import "./css/ExpandedArticle.css";
-
 import {
   renderExtendedArticle,
   articleVote
 } from "../actions/extendedArticleActions";
-// import PostComment from "./PostComment";
-// import Error from "./WrongPath";
-// import { ARTICLE_VOTES } from "../actions/types";
 import Comments from "./Comments";
-// const isEmpty = require("lodash.isempty");
 
 class ExpandedArticle extends Component {
-  // state = {
-  //   article: {},
-  //   comments: [],
-  //   commentPosted: false,
-  //   voted: "",
-  //   commentVoted: "",
-  //   error: {}
-  // };
-
   render() {
-    // return isEmpty(this.state.error) ? (
     return (
       <div>
         <table className="articleTable">
@@ -90,9 +75,6 @@ class ExpandedArticle extends Component {
         />
       </div>
     );
-    // ) : (
-    //   <Error />
-    // );
   }
 
   componentDidMount() {
@@ -100,119 +82,8 @@ class ExpandedArticle extends Component {
     const currentArticle = this.props.articles.filter(article => {
       return article._id === articleID;
     });
-    // this.getComments(articleID);
-    // this.getArticle(articleID);
     this.props.renderExtendedArticle(currentArticle, articleID);
   }
-
-  // componentDidUpdate() {
-  //   const articleID = this.props.match.params.articleID;
-  //   this.getComments(articleID);
-  // }
-
-  // getComments = params => {
-  //   api
-  //     .getCommentsByArticleId(params)
-  //     .then(response => {
-  //       this.setState({
-  //         comments: response.data.comments
-  //       });
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //     });
-  // };
-
-  // getArticle = params => {
-  // api
-  //   .getArticleByArticleId(params)
-  //   .then(response => {
-  //     const articleData = {
-  //       ...response.data.article,
-  //       created_by: response.data.article.created_by.username
-  //     };
-  //     this.setState({
-  //       article: articleData
-  //     });
-  //   })
-  //     .catch(error => {
-  //       console.log(error);
-  //       this.setState({
-  //         error: {
-  //           statusCode: error.response.status,
-  //           message: error.response.data.message
-  //         }
-  //       });
-  //     });
-  // };
-
-  // articleVote = (params, selection) => dispatch => {
-  //   console.log("clik");
-  //   api.voteByArticleId(params, selection).then(response => {
-  //     let article = this.props.extArticle;
-  //     let vote = this.props.extArticle.votes;
-  //     selection === "up" ? vote++ : vote--;
-  //     // this.setState({
-  //     //   ...this.state,
-  //     //   voted: selection === "up" ? "up" : "down",
-  //     //   article: {
-  //     //     ...this.state.article,
-  //     //     votes: vote
-  //     //   }
-  //     // });
-  //     dispatch({
-  //       type: ARTICLE_VOTES,
-  //       payload: {
-  //         article: {
-  //           ...article,
-  //           voted: selection === "up" ? "up" : "down",
-  //           votes: vote
-  //         }
-  //       }
-  //     });
-  //   });
-  // };
-
-  // setCommentCount = comment => {
-  //   this.setState({
-  //     ...this.state,
-  //     commentCount: comment.vote
-  //   });
-  // };
-
-  // commentVote = (params, selection, comment) => {
-  //   const index = this.state.comments.indexOf(comment);
-  // api.voteByCommentId(params, selection).then(response => {
-  //   let vote = comment.votes;
-  //   selection === "up" ? vote++ : vote--;
-  //   let updateComments = this.state.comments;
-  //   updateComments[index].votes = response.data.comment.votes;
-  //   this.setState({
-  //     ...this.state,
-  //     comments: updateComments,
-  //     commentVoted: selection === "up" ? "up" : "down"
-  //   });
-  // });
-  // };
-
-  // deleteComment = params => {
-  //   api.deleteComment(params).then(response => {
-  //     console.log(response);
-  //     let updateComments = this.state.comments;
-  //     console.log(updateComments);
-  //     this.setState({
-  //       ...this.state,
-  //       comments: updateComments
-  //     });
-  //   });
-  // };
-
-  // Would be used for implementing a successfully posted message.
-  // commentPosted = () => {
-  //   this.setState({
-  //     commentPosted: true
-  //   });
-  // };
 }
 
 const mapStateToProps = state => ({

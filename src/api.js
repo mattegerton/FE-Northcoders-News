@@ -4,7 +4,6 @@ const URL = "https://nc-news-matt.herokuapp.com/api";
 
 export const getAllTopics = () => {
   return axios.get(`${URL}/topics`).then(response => response.data);
-  //({data}) => data.topics
 };
 
 export const getArticlesByTopicSlug = topicSlug => {

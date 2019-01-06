@@ -6,9 +6,6 @@ import PropTypes from "prop-types";
 import "./css/User.css";
 
 class Users extends Component {
-  // state = {
-  //   users: []
-  // };
   render() {
     return (
       <div>
@@ -40,19 +37,6 @@ class Users extends Component {
   componentDidMount() {
     this.props.fetchUsers();
   }
-
-  // getAllUsers = () => {
-  //   api
-  //     .getAllUsers()
-  //     .then(response => {
-  //       this.setState({
-  //         users: response.data.users
-  //       });
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //     });
-  // };
 }
 
 Users.propTypes = {

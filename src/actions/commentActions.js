@@ -7,7 +7,6 @@ export const voteOnComment = (
   comment,
   newState
 ) => dispatch => {
-  // check if button is disabled //
   let check = document.getElementById(`button${selection}${comment._id}`)
     .disabled;
 
@@ -26,7 +25,6 @@ export const voteOnComment = (
     ).style.color = color;
   }
 
-  // change vote count api
   api.voteByCommentId(params, selection).then(response => {
     let vote = comment.votes;
     if (selection === "up") {
@@ -39,7 +37,6 @@ export const voteOnComment = (
       vote--;
     }
 
-    // add to redux store
     dispatch({
       type: COMMENT_VOTE,
       payload: {

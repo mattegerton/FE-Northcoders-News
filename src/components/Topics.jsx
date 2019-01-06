@@ -6,9 +6,6 @@ import PropTypes from "prop-types";
 import "./css/Topics.css";
 
 class Topics extends Component {
-  // state = {
-  //   topics: []
-  // };
   render() {
     return (
       <div>
@@ -45,19 +42,6 @@ class Topics extends Component {
   componentDidMount() {
     this.props.fetchTopics();
   }
-
-  // getAllTopics() {
-  //   api
-  //     .getAllTopics()
-  //     .then(response => {
-  //       this.setState({
-  //         topics: response.topics
-  //       });
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //     });
-  // }
 }
 
 Topics.propTypes = {

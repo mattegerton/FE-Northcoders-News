@@ -9,18 +9,7 @@ import Loader from "./Loader";
 const isEmpty = require("lodash.isempty");
 
 class Articles extends Component {
-  // state = {
-  //   articles: [],
-  //   newArticle: false,
-  //   error: {},
-  //   topic: ""
-  // };
-
   render() {
-    // console.log(this.props);
-    // return this.props.articles.error.code ? (
-    //   <Route component={Error} />
-    // ) : (
     return (
       <div>
         <h3> Articles </h3>
@@ -52,56 +41,6 @@ class Articles extends Component {
       this.props.fetchArticles(this.props.match.params.topic);
     }
   }
-
-  // getArticles = params => {
-  //   if (params !== undefined) {
-  //     api
-  //       .getArticlesByTopicSlug(params)
-  //       .then(response => {
-  //         let articlesData = response.data.articles.map(article => {
-  //           console.log(article.created_by);
-  //           return {
-  //             ...article,
-  //             created_by: article.created_by
-  //               ? article.created_by.username
-  //               : "Guest"
-  //           };
-  //         });
-  //         this.setState({
-  //           articles: articlesData,
-  //           topic: params
-  //         });
-  //       })
-  //       .catch(error => {
-  //         console.log(error);
-  //       });
-  //   } else {
-  //     api
-  //       .getAllArticles()
-  //       .then(response => {
-  //         const articlesData = response.data.articles.map(article => {
-  //           return {
-  //             ...article,
-  //             created_by: article.created_by
-  //               ? article.created_by.username
-  //               : "Guest"
-  //           };
-  //         });
-  //         this.setState({
-  //           articles: articlesData
-  //         });
-  //       })
-  //       .catch(error => {
-  //         console.log(error);
-  //         this.setState({
-  //           error: {
-  //             statusCode: error.response.status,
-  //             message: error.response.data.message
-  //           }
-  //         });
-  //       });
-  //   }
-  // };
 }
 
 Articles.propTypes = {

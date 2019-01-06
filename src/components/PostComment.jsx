@@ -10,7 +10,6 @@ class PostComment extends Component {
     commentPosted: false
   };
   render() {
-    console.log(this.props.article, "<<<<");
     return (
       <div id="comment_form">
         <div>
@@ -57,12 +56,6 @@ class PostComment extends Component {
         this.props.articleID
       );
     });
-    // .then(response => {
-    //   this.setState({
-    //     body: "",
-    //     commentPosted: true
-    //   });
-    // })
   };
 }
 
